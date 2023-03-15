@@ -1,10 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import React from "react";
+
 import { Header } from "./header";
+import "@testing-library/jest-dom";
 
 describe("Given the Header component", () => {
-  describe("when you enter in the component", () => {
-    test("then it should render it", () => {
+  describe("assuming it has anything as children", () => {
+    test("then it should Header", () => {
       render(
         <Header>
           <></>

@@ -1,4 +1,3 @@
-import React from "react";
 import { AppRouter } from "../app-router/app-router";
 import { Header } from "../header/header";
 import { Menu } from "../menu/menu";
