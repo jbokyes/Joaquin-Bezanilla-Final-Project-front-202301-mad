@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import { MenuOption } from "../app/app";
 import { AppRouter } from "./app-router";
 import "@testing-library/jest-dom";
-import React from "react";
 
 describe("Given AppRouter component", () => {
   const mockOptions: MenuOption[] = [
