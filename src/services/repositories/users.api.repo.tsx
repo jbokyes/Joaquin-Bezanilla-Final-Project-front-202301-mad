@@ -14,7 +14,7 @@ export class UsersApiRepo implements UserRepo<UserServerResponse> {
 
   async create(
     userInfo: Partial<UserStructure>,
-    action: string
+    action: "register" | "login"
   ): Promise<UserServerResponse> {
     const url = this.url + "/" + action;
 

@@ -17,7 +17,7 @@ describe("Given UsersApiRepo class being instanced", () => {
       });
       const result = await mockRepoUsers.create(
         { username: "joaquin-test" },
-        "joaquin-test"
+        "register"
       );
       expect(result).toEqual({ username: "joaquin-test" });
     });
@@ -29,7 +29,7 @@ describe("Given UsersApiRepo class being instanced", () => {
       });
       const result = mockRepoUsers.create(
         { username: "joaquin-test" },
-        "joaquin-test"
+        "register"
       );
       await expect(result).rejects.toThrow();
     });

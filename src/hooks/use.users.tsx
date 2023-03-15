@@ -11,6 +11,7 @@ export function useUsers(repo: UsersApiRepo) {
 
   const registerUser = async (userInfo: Partial<UserStructure>) => {
     try {
+      console.log(repo.create(userInfo, "register"));
       const infoUser = await repo.create(userInfo, "register");
       usersDispatch(register(infoUser.results[0]));
     } catch (error) {
