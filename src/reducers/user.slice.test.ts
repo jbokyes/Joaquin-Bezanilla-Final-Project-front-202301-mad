@@ -43,7 +43,7 @@ describe("Given the userSlice with payload and initial state mocked", () => {
       };
       const result = userReducer(mockInitialState, mockLoginAction);
       expect(result).toEqual({
-        userLogged: mockPayload as UserStructure,
+        userLogged: mockPayload,
         users: [],
       });
     });
