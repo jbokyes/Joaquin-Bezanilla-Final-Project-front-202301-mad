@@ -3,6 +3,8 @@ import { render, screen } from "@testing-library/react";
 import { MenuOption } from "../app/app";
 import { AppRouter } from "./app-router";
 import "@testing-library/jest-dom";
+import { Provider } from "react-redux";
+import { store } from "../../store/store";
 
 describe("Given AppRouter component", () => {
   const mockOptions: MenuOption[] = [
@@ -15,12 +17,20 @@ describe("Given AppRouter component", () => {
   describe("When rendering and the path is '/'", () => {
     test("Then, the title 'Welcome to the Rick and Morty' from Home should be in the screen", async () => {
       render(
-        <Router
-          initialEntries={["/", "/about", "/login", "/register", "/favourites"]}
-          initialIndex={0}
-        >
-          <AppRouter menuOptions={mockOptions}></AppRouter>
-        </Router>
+        <Provider store={store}>
+          <Router
+            initialEntries={[
+              "/",
+              "/about",
+              "/login",
+              "/register",
+              "/favourites",
+            ]}
+            initialIndex={0}
+          >
+            <AppRouter menuOptions={mockOptions}></AppRouter>
+          </Router>
+        </Provider>
       );
 
       const element = await screen.findByRole("heading", {
@@ -32,12 +42,20 @@ describe("Given AppRouter component", () => {
   describe("When rendering and the path is '/about'", () => {
     test("Then, the title 'What is this site for?' from Home should be in the screen", async () => {
       render(
-        <Router
-          initialEntries={["/", "/about", "/login", "/register", "/favourites"]}
-          initialIndex={1}
-        >
-          <AppRouter menuOptions={mockOptions}></AppRouter>
-        </Router>
+        <Provider store={store}>
+          <Router
+            initialEntries={[
+              "/",
+              "/about",
+              "/login",
+              "/register",
+              "/favourites",
+            ]}
+            initialIndex={1}
+          >
+            <AppRouter menuOptions={mockOptions}></AppRouter>
+          </Router>
+        </Provider>
       );
 
       const element = await screen.findByRole("heading", {
@@ -49,12 +67,20 @@ describe("Given AppRouter component", () => {
   describe("When rendering and the path is '/login'", () => {
     test("Then, the title 'Login' from Home should be in the screen", async () => {
       render(
-        <Router
-          initialEntries={["/", "/about", "/login", "/register", "/favourites"]}
-          initialIndex={2}
-        >
-          <AppRouter menuOptions={mockOptions}></AppRouter>
-        </Router>
+        <Provider store={store}>
+          <Router
+            initialEntries={[
+              "/",
+              "/about",
+              "/login",
+              "/register",
+              "/favourites",
+            ]}
+            initialIndex={2}
+          >
+            <AppRouter menuOptions={mockOptions}></AppRouter>
+          </Router>
+        </Provider>
       );
 
       const element = await screen.findByRole("heading", {
@@ -66,12 +92,20 @@ describe("Given AppRouter component", () => {
   describe("When rendering and the path is '/register'", () => {
     test("Then, the title 'register' from Home should be in the screen", async () => {
       render(
-        <Router
-          initialEntries={["/", "/about", "/login", "/register", "/favourites"]}
-          initialIndex={3}
-        >
-          <AppRouter menuOptions={mockOptions}></AppRouter>
-        </Router>
+        <Provider store={store}>
+          <Router
+            initialEntries={[
+              "/",
+              "/about",
+              "/login",
+              "/register",
+              "/favourites",
+            ]}
+            initialIndex={3}
+          >
+            <AppRouter menuOptions={mockOptions}></AppRouter>
+          </Router>
+        </Provider>
       );
 
       const element = await screen.findByRole("heading", {
@@ -83,12 +117,20 @@ describe("Given AppRouter component", () => {
   describe("When rendering and the path is '/favourites'", () => {
     test("Then, the title 'Favourites' from Home should be in the screen", async () => {
       render(
-        <Router
-          initialEntries={["/", "/about", "/login", "/register", "/favourites"]}
-          initialIndex={4}
-        >
-          <AppRouter menuOptions={mockOptions}></AppRouter>
-        </Router>
+        <Provider store={store}>
+          <Router
+            initialEntries={[
+              "/",
+              "/about",
+              "/login",
+              "/register",
+              "/favourites",
+            ]}
+            initialIndex={4}
+          >
+            <AppRouter menuOptions={mockOptions}></AppRouter>
+          </Router>
+        </Provider>
       );
 
       const element = await screen.findByRole("heading", {
