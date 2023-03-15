@@ -1,7 +1,5 @@
 import { render, screen } from "@testing-library/react";
-
 import { Header } from "./header";
-import "@testing-library/jest-dom";
 
 describe("Given the Header component", () => {
   describe("assuming it has anything as children", () => {
