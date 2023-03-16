@@ -5,8 +5,8 @@ export type ProtoUserStructure = {
   lastName?: string;
   email: string;
   passwd?: string;
-  role: string;
-  addFoods: FoodStructure[];
+  role?: string;
+  addFoods?: FoodStructure[];
   token?: string;
 };
 

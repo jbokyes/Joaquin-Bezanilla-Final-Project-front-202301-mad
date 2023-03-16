@@ -14,7 +14,7 @@ export class UsersApiRepo implements UserRepo<UserServerResponse> {
 
   async create(
     userInfo: Partial<UserStructure>,
-    action: string
+    action: "register" | "login"
   ): Promise<UserServerResponse> {
     const url = this.url + "/" + action;
 
@@ -25,11 +25,11 @@ export class UsersApiRepo implements UserRepo<UserServerResponse> {
         "Content-type": "application/json",
       },
     });
-
+    debugger;
     if (!resp.ok)
       throw new Error("HTTP Error " + resp.status + " / " + resp.statusText);
 
-    const userData = (await resp.json()) as UserServerResponse;
+    const userData = await resp.json();
 
     return userData;
   }
