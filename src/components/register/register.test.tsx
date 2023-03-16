@@ -8,7 +8,6 @@ import { useUsers } from "../../hooks/use.users";
 import { UsersApiRepo } from "../../services/repositories/users.api.repo";
 import { store } from "../../store/store";
 import Register from "./register";
-
 jest.mock("../../hooks/use.users");
 
 describe("Given the Register component", () => {
@@ -54,7 +53,9 @@ describe("Given the Register component", () => {
   });
   describe("When the submit button is clicked", () => {
     test("Then, the handleSubmit function should be called", async () => {
-      const usersMockRepo = {} as unknown as UsersApiRepo;
+      const usersMockRepo = {
+        create: jest.fn(),
+      } as unknown as UsersApiRepo;
       const inputs = screen.getAllByRole("textbox");
       await userEvent.type(inputs[0], "test");
       await userEvent.type(inputs[1], "test");
@@ -62,10 +63,10 @@ describe("Given the Register component", () => {
       await userEvent.type(inputs[3], "test");
       const button = screen.getByRole("button");
       await userEvent.click(button);
-      expect(useUsers(usersMockRepo).registerUser).toHaveBeenCalledWith({
-        name: "test",
-        lastName: "test",
+      await expect(useUsers(usersMockRepo).registerUser).toHaveBeenCalledWith({
         email: "test",
+        lastName: "test",
+        username: "test",
         passwd: "test",
       });
     });

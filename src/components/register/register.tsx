@@ -7,17 +7,18 @@ export function Register() {
   const repo = useMemo(() => new UsersApiRepo(), []);
   const { registerUser } = useUsers(repo);
 
-  const handleSubmit = (ev: SyntheticEvent<HTMLFormElement>) => {
+  const handleSubmit = async (ev: SyntheticEvent<HTMLFormElement>) => {
     ev.preventDefault();
+    debugger;
     const formNewUser = ev.currentTarget;
 
     const newUser: Partial<UserStructure> = {
-      username: (formNewUser[0] as HTMLInputElement).value,
-      lastName: (formNewUser[1] as HTMLInputElement).value,
-      email: (formNewUser[2] as HTMLInputElement).value,
-      passwd: (formNewUser[3] as HTMLInputElement).value,
+      username: (formNewUser.elements[0] as HTMLFormElement).value,
+      lastName: (formNewUser.elements[1] as HTMLInputElement).value,
+      email: (formNewUser.elements[2] as HTMLInputElement).value,
+      passwd: (formNewUser.elements[3] as HTMLInputElement).value,
     };
-    registerUser(newUser);
+    await registerUser(newUser);
     formNewUser.reset();
   };
 
