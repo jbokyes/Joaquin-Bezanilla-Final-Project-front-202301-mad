@@ -1,0 +1,30 @@
+.register {
+  padding: 1rem 2rem;
+  background-color: #ede9d5;
+  h2 {
+    margin-bottom: 2rem;
+    color: #414a2b;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    input {
+      width: 15rem;
+      border-style: none;
+      border-bottom: solid;
+      border-color: #617143;
+      background-color: #ede9d5;
+    }
+    button {
+      width: 12rem;
+      align-content: center;
+      height: fit-content;
+      align-self: center;
+    }
+    p {
+      color: #7d3017;
+    }
+  }
+}
