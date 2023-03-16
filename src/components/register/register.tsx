@@ -2,6 +2,7 @@ import { SyntheticEvent, useMemo } from "react";
 import { useUsers } from "../../hooks/use.users";
 import { UserStructure } from "../../models/user";
 import { UsersApiRepo } from "../../services/repositories/users.api.repo";
+import styles from "./register.module.scss";
 
 export function Register() {
   const repo = useMemo(() => new UsersApiRepo(), []);
@@ -23,37 +24,47 @@ export function Register() {
   };
 
   return (
-    <div className="Register">
+    <div className={styles.register}>
       <h2>Register</h2>
-      <form
-        className="register-form"
-        data-testid="form"
-        onSubmit={handleSubmit}
-      >
-        <input
-          type="text"
-          placeholder="Name"
-          className="register-form__field"
-          name="name"
-        />
-        <input
-          type="text"
-          placeholder="Last Name"
-          className="register-form__field"
-          name="lastName"
-        />
-        <input
-          type="text"
-          placeholder="email"
-          className="register-form__field"
-          name="email"
-        />
-        <input
-          type="text"
-          placeholder="passwd"
-          className="register-form__field"
-          name="passwd"
-        />
+
+      <form data-testid="form" onSubmit={handleSubmit}>
+        <div>
+          <p>Name:</p>
+          <input
+            type="text"
+            placeholder="Name"
+            className="register-form__field"
+            name="name"
+          />
+        </div>
+        <div>
+          <p>Last name:</p>
+          <input
+            type="text"
+            placeholder="Last Name"
+            className="register-form__field"
+            name="lastName"
+          />
+        </div>
+        <div>
+          <p>Email:</p>
+          <input
+            type="text"
+            placeholder="email"
+            className="register-form__field"
+            name="email"
+          />
+        </div>
+        <div>
+          <p>Password:</p>
+          <input
+            type="text"
+            placeholder="Password"
+            className="register-form__field"
+            name="passwd"
+          />
+        </div>
+
         <button>Register</button>
       </form>
     </div>

@@ -1,2 +1,2 @@
-const num = 22;
+export const num = 22;
 console.log(num);
