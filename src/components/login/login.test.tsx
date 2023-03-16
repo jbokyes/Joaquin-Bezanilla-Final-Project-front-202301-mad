@@ -26,22 +26,22 @@ describe("Given the Login component", () => {
       );
     });
   });
-  describe("When rendering it", () => {
-    test("then it should render Login", () => {
+  describe("When rendering the login component", () => {
+    test("Then it should render the title 'login'", () => {
       const element = screen.getByRole("heading");
       expect(element).toBeInTheDocument();
     });
     test("Then the email <input> should be in the document", () => {
-      const inputs = screen.getAllByRole("textbox");
-      expect(inputs[0]).toBeInTheDocument();
+      const inputs0 = screen.getAllByRole("textbox");
+      expect(inputs0[0]).toBeInTheDocument();
     });
     test("Then the password <input> should be in the document", () => {
-      const inputs = screen.getAllByRole("textbox");
-      expect(inputs[1]).toBeInTheDocument();
+      const inputs1 = screen.getAllByRole("textbox");
+      expect(inputs1[1]).toBeInTheDocument();
     });
     test("Then the <button> should be in the document", () => {
-      const element = screen.getByRole("button");
-      expect(element).toBeInTheDocument();
+      const button = screen.getByRole("button");
+      expect(button).toBeInTheDocument();
     });
     describe("When the submit button is clicked", () => {
       test("Then, the handleSubmit function should be called", async () => {
