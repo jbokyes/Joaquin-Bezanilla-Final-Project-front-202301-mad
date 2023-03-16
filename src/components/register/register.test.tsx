@@ -63,7 +63,7 @@ describe("Given the Register component", () => {
       await userEvent.type(inputs[3], "test");
       const button = screen.getByRole("button");
       await userEvent.click(button);
-      await expect(useUsers(usersMockRepo).registerUser).toHaveBeenCalledWith({
+      expect(useUsers(usersMockRepo).registerUser).toHaveBeenCalledWith({
         email: "test",
         lastName: "test",
         username: "test",
