@@ -11,7 +11,6 @@ export function useUsers(repo: UsersApiRepo) {
 
   const registerUser = async (userInfo: Partial<UserStructure>) => {
     try {
-      console.log(repo.create(userInfo, "register"));
       const infoUser = await repo.create(userInfo, "register");
       usersDispatch(register(infoUser.results[0]));
     } catch (error) {
@@ -22,7 +21,6 @@ export function useUsers(repo: UsersApiRepo) {
   const loginUser = async (userInfo: Partial<UserStructure>) => {
     try {
       const infoUser = await repo.create(userInfo, "login");
-
       usersDispatch(login(infoUser.results[0]));
     } catch (error) {
       console.log((error as Error).message);
