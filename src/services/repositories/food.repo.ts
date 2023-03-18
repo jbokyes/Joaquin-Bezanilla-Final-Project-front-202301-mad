@@ -9,9 +9,10 @@ export interface FoodRepoStructure {
 }
 
 export class FoodRepo {
+  // Recordar tipado cuando agregue funciones
   url: string;
   constructor() {
-    this.url = "http://localhost:4500/bombardinos";
+    this.url = "http://localhost:4200/foods";
   }
 
   async loadFoods(): Promise<FoodServerResponse> {

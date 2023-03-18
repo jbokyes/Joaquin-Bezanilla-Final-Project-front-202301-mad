@@ -1,6 +1,6 @@
 export const foodActions = {
-  load: "bombardino@load",
-  add: "bombardino@add",
-  update: "bombardino@update",
-  delete: "bombardino@delete",
+  load: "food@load",
+  add: "food@add",
+  update: "food@update",
+  delete: "food@delete",
 };

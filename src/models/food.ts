@@ -10,5 +10,5 @@ export type ProtoFoodStructure = {
 export type FoodStructure = { id: string } & ProtoFoodStructure;
 
 export type FoodServerResponse = {
-  results: FoodStructure;
+  results: FoodStructure[];
 };
