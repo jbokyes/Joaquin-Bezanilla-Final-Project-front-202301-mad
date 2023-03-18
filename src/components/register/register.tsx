@@ -1,7 +1,7 @@
 import { SyntheticEvent, useMemo } from "react";
 import { useUsers } from "../../hooks/use.users";
 import { UserStructure } from "../../models/user";
-import { UsersApiRepo } from "../../services/repositories/users.api.repo";
+import { UsersApiRepo } from "../../services/repositories/users.repo";
 import styles from "./register.module.scss";
 
 export function Register() {

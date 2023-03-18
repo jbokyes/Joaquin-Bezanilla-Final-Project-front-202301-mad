@@ -1,4 +1,4 @@
-import { UsersApiRepo } from "./users.api.repo";
+import { UsersApiRepo } from "./users.repo";
 
 describe("Given UsersApiRepo class being instanced", () => {
   let mockRepoUsers: UsersApiRepo;

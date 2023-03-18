@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { UserStructure } from "../models/user";
 import { login, register } from "../reducers/user.slice";
-import { UsersApiRepo } from "../services/repositories/users.api.repo";
+import { UsersApiRepo } from "../services/repositories/users.repo";
 import { AppDispatch, RootState } from "../store/store";
 
 export function useUsers(repo: UsersApiRepo) {

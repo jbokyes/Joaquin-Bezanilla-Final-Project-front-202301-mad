@@ -4,7 +4,7 @@ import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { UserStructure } from "../models/user";
-import { UsersApiRepo } from "../services/repositories/users.api.repo";
+import { UsersApiRepo } from "../services/repositories/users.repo";
 import { store } from "../store/store";
 import { useUsers } from "./use.users";
 
