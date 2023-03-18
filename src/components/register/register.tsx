@@ -10,7 +10,6 @@ export function Register() {
 
   const handleSubmit = async (ev: SyntheticEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    debugger;
     const formNewUser = ev.currentTarget;
 
     const newUser: Partial<UserStructure> = {
