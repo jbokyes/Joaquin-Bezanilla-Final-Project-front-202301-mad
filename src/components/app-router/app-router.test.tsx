@@ -19,11 +19,9 @@ describe("Given AppRouter component", () => {
     );
   };
   describe("When rendering and the path is '/'", () => {
-    test("Then, the title 'Home' from Home should be in the screen", async () => {
+    test("Then, the image from Welcome from Home should be in the screen", async () => {
       await waitFor(async () => prepareTestFunction(0));
-      const element = await screen.findByRole("heading", {
-        name: "Home",
-      });
+      const element = await screen.findByRole("img");
       expect(element).toBeInTheDocument();
     });
   });
