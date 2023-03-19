@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
+import { FoodStructure } from "../models/food";
 import { UserStructure } from "../models/user";
-import { login, register } from "../reducers/user.slice";
+import { login, register, update } from "../reducers/user.slice";
 import { UsersApiRepo } from "../services/repositories/users.repo";
 import { AppDispatch, RootState } from "../store/store";
 
 export function useUsers(repo: UsersApiRepo) {
-  const users = useSelector((state: RootState) => state.users);
+  const usersState = useSelector((state: RootState) => state.users);
 
   const usersDispatch = useDispatch<AppDispatch>();
 
@@ -27,9 +28,24 @@ export function useUsers(repo: UsersApiRepo) {
     }
   };
 
+  const userFavourites = async (
+    foodId: FoodStructure["id"],
+    action: string
+  ) => {
+    try {
+      const userToken = usersState.userLogged.token;
+      if (!userToken) throw new Error("Not authorized");
+      const userInfo = await repo.update(foodId, userToken, action);
+      usersDispatch(update(userInfo.results[0]));
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  };
+
   return {
-    users,
+    usersState,
     registerUser,
     loginUser,
+    userFavourites,
   };
 }

@@ -1,3 +1,4 @@
+import { FoodStructure } from "../../models/food";
 import { UserServerResponse, UserStructure } from "../../models/user";
 import { URL_LATINO_FOOD_USERS } from "../../variables";
 
@@ -31,5 +32,39 @@ export class UsersApiRepo implements UserRepo<UserServerResponse> {
     const userData = await resp.json();
 
     return userData;
+  }
+
+  async readId(
+    userId: UserStructure["id"],
+    token: string
+  ): Promise<UserServerResponse> {
+    const url = this.url + "/" + userId;
+    const resp = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer" + token,
+      },
+    });
+    if (!resp.ok)
+      throw new Error("Error http: " + resp.status + "/" + resp.statusText);
+    const userInfo = (await resp.json()) as UserServerResponse;
+    return userInfo;
+  }
+  async update(
+    foodId: FoodStructure["id"],
+    token: string,
+    action: string
+  ): Promise<UserServerResponse> {
+    const url = this.url + "/" + action + "/favourites" + foodId;
+    const resp = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+    if (!resp.ok)
+      throw new Error("Error http: " + resp.status + " / " + resp.statusText);
+    const userInfo = (await resp.json()) as UserServerResponse;
+    return userInfo;
   }
 }
