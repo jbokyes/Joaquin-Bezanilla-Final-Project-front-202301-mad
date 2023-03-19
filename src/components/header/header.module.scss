@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #ede9d5;
+  .header__image {
+    width: 8%;
+  }
+  &__title {
+    color: #414a2b;
+  }
+}
