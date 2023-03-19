@@ -4,12 +4,14 @@ import { UserStructure } from "../models/user";
 
 export type State = {
   userLogged: UserStructure;
-  users: UserStructure[];
+  user: UserStructure;
+  allUsers: UserStructure[];
 };
 
 const initialState: State = {
   userLogged: {} as UserStructure,
-  users: [],
+  user: {} as UserStructure,
+  allUsers: [],
 };
 
 const userSlice = createSlice({
@@ -18,14 +20,24 @@ const userSlice = createSlice({
 
   reducers: {
     register(state, action: PayloadAction<UserStructure>) {
-      state.users = [...state.users, action.payload];
+      state.allUsers = [...state.allUsers, action.payload];
     },
 
     login(state, action: PayloadAction<UserStructure>) {
       state.userLogged = action.payload;
     },
+    readId(state, action: PayloadAction<UserStructure>) {
+      state.user = action.payload;
+    },
+    update(state, action: PayloadAction<UserStructure>) {
+      state.userLogged = { ...state.userLogged, ...action.payload };
+      const actualInfo = [...state.allUsers];
+      state.allUsers = actualInfo.map((item) =>
+        item.id === action.payload.id ? { ...item, ...action.payload } : item
+      );
+    },
   },
 });
 
-export const { register, login } = userSlice.actions;
+export const { register, login, readId, update } = userSlice.actions;
 export const userReducer = userSlice.reducer;

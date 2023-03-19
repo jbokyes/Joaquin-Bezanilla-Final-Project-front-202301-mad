@@ -5,11 +5,13 @@ import { State, userReducer } from "./user.slice";
 describe("Given the userSlice with payload and initial state mocked", () => {
   let mockInitialState: State;
   let mockPayload: UserStructure;
+  let mockUser: UserStructure;
 
   beforeEach(() => {
     mockInitialState = {
       userLogged: {} as UserStructure,
-      users: [],
+      user: {} as UserStructure,
+      allUsers: [],
     };
 
     mockPayload = {
@@ -18,6 +20,13 @@ describe("Given the userSlice with payload and initial state mocked", () => {
       role: "user",
       addFoods: [],
       id: "100",
+    };
+    mockUser = {
+      username: "testing-update",
+      email: "testing-update",
+      lastName: "testing-update",
+      addFoods: [],
+      id: "99",
     };
   });
 
@@ -30,7 +39,8 @@ describe("Given the userSlice with payload and initial state mocked", () => {
       const result = userReducer(mockInitialState, mockRegisterAction);
       expect(result).toEqual({
         userLogged: {} as UserStructure,
-        users: [mockPayload],
+        allUsers: [mockPayload],
+        user: {},
       });
     });
   });
@@ -44,7 +54,63 @@ describe("Given the userSlice with payload and initial state mocked", () => {
       const result = userReducer(mockInitialState, mockLoginAction);
       expect(result).toEqual({
         userLogged: mockPayload,
-        users: [],
+        allUsers: [],
+        user: {},
+      });
+    });
+  });
+  describe("When the readId action is called", () => {
+    test("Then, the function should return whatever payload we give", () => {
+      const mockReadIdAction: PayloadAction<UserStructure> = {
+        type: "user/readId",
+        payload: mockPayload,
+      };
+      const result = userReducer(mockInitialState, mockReadIdAction);
+      expect(result).toEqual({
+        userLogged: {},
+        allUsers: [],
+        user: mockPayload,
+      });
+    });
+  });
+  describe("When we call the update action", () => {
+    test("Then, with our initial state, it should return allUsers containing the payload", () => {
+      mockInitialState = {
+        userLogged: {} as UserStructure,
+        allUsers: [mockUser, mockPayload],
+        user: {} as UserStructure,
+      };
+      const mockUpdate: PayloadAction<UserStructure> = {
+        type: "user/update",
+        payload: {
+          username: "testing-update",
+          email: "testing-update",
+          lastName: "testing-update",
+          addFoods: [],
+          id: "100",
+        },
+      };
+      const result = userReducer(mockInitialState, mockUpdate);
+      expect(result).toEqual({
+        userLogged: {
+          username: "testing-update",
+          email: "testing-update",
+          lastName: "testing-update",
+          addFoods: [],
+          id: "100",
+        },
+        allUsers: [
+          mockUser,
+          {
+            username: "testing-update",
+            email: "testing-update",
+            lastName: "testing-update",
+            addFoods: [],
+            id: "100",
+            role: "user",
+          },
+        ],
+        user: {},
       });
     });
   });

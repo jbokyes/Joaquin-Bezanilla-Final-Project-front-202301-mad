@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { MemoryRouter as Router } from "react-router";
 import { useUsers } from "../../hooks/use.users";
-import { UsersApiRepo } from "../../services/repositories/users.api.repo";
+import { UsersApiRepo } from "../../services/repositories/users.repo";
 import { store } from "../../store/store";
 import { Login } from "./login";
 
