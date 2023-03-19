@@ -65,8 +65,8 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
       expect(mockRepo.create).toHaveBeenCalled();
     });
   });
-  describe("When the TestComponent is rendered and the addFavourite button is clicked while there is an available token", () => {
-    test("Then the addFavourite function in the hook should be called", async () => {
+  describe("When the TestComponent is rendered and the addFavourite button is clicked", () => {
+    test("Then the addFavourite function in the hook should be called if there is an available token", async () => {
       const mockSuccesfulResponse: UserServerResponse = {
         results: [mockPayload],
       } as unknown as UserServerResponse;
@@ -75,6 +75,18 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
       await act(async () => userEvent.click(elements[1]));
       await act(async () => userEvent.click(elements[2]));
       expect(mockRepo.create).toHaveBeenCalled();
+    });
+    test("Then the addFavourite function in the hook should throw an error if there is no available token", async () => {
+      const mockUnsuccesfulResponse: UserServerResponse = {
+        results: { username: "test", email: "test", id: "1" },
+      } as unknown as UserServerResponse;
+      const elements = await screen.findAllByRole("button");
+      (mockRepo.create as jest.Mock).mockResolvedValueOnce(
+        mockUnsuccesfulResponse
+      );
+      await act(async () => userEvent.click(elements[1]));
+      await act(async () => userEvent.click(elements[2]));
+      expect(mockRepo.update).not.toBeCalled();
     });
   });
 });
