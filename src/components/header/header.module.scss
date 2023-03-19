@@ -3,6 +3,10 @@
   flex-direction: row;
   justify-content: space-between;
   background-color: #ede9d5;
+  .header__div {
+    display: flex;
+    flex-direction: row;
+  }
   .header__image {
     width: 6%;
   }

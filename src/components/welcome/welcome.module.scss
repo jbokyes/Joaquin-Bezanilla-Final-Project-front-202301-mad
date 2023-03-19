@@ -1,0 +1,11 @@
+.welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  background-color: #ede9d5;
+  &__p {
+    color: #414a2b;
+    font-size: 36px;
+  }
+}
