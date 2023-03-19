@@ -3,7 +3,7 @@
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
-import { UserStructure } from "../models/user";
+import { UserServerResponse, UserStructure } from "../models/user";
 import { UsersApiRepo } from "../services/repositories/users.repo";
 import { store } from "../store/store";
 import { useUsers } from "./use.users";
@@ -20,15 +20,20 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
 
     mockRepo = {
       create: jest.fn(),
+      update: jest.fn(),
+      readId: jest.fn(),
     } as unknown as UsersApiRepo;
 
     const TestComponent = function () {
-      const { registerUser, loginUser } = useUsers(mockRepo);
+      const { registerUser, loginUser, userFavourites } = useUsers(mockRepo);
 
       return (
         <>
           <button onClick={() => registerUser(mockPayload)}>register</button>
           <button onClick={() => loginUser(mockPayload)}>login</button>
+          <button onClick={() => userFavourites("testId", "testaction")}>
+            Add to Favourites
+          </button>
         </>
       );
     };
@@ -57,6 +62,18 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
     test("Then, the loginUser function should be called", async () => {
       const elements = await screen.findAllByRole("button");
       await act(async () => userEvent.click(elements[1]));
+      expect(mockRepo.create).toHaveBeenCalled();
+    });
+  });
+  describe("When the TestComponent is rendered and the addFavourite button is clicked while there is an available token", () => {
+    test("Then the addFavourite function in the hook should be called", async () => {
+      const mockSuccesfulResponse: UserServerResponse = {
+        results: [mockPayload],
+      } as unknown as UserServerResponse;
+      (mockRepo.update as jest.Mock).mockResolvedValue(mockSuccesfulResponse);
+      const elements = await screen.findAllByRole("button");
+      await act(async () => userEvent.click(elements[1]));
+      await act(async () => userEvent.click(elements[2]));
       expect(mockRepo.create).toHaveBeenCalled();
     });
   });
