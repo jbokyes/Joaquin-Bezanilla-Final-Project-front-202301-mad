@@ -4,9 +4,13 @@
   justify-content: space-between;
   background-color: #ede9d5;
   .header__image {
-    width: 8%;
+    width: 6%;
   }
   &__title {
     color: #414a2b;
+  }
+  &__menu {
+    align-items: center;
+    list-style: none;
   }
 }

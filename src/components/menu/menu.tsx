@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MenuOption } from "../app/app";
-
+import styles from "./menu.module.scss";
 type MenuProps = {
   options: MenuOption[];
 };
@@ -8,7 +8,7 @@ type MenuProps = {
 export function Menu({ options }: MenuProps) {
   return (
     <nav>
-      <ul>
+      <ul className={styles.menu}>
         {options.map((item) => (
           <li key={item.label}>
             <Link to={item.path}>

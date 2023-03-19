@@ -7,11 +7,11 @@ export function Header({ children }: HeaderProps) {
     <header className={styles.header}>
       <img
         className={styles.header__image}
-        src="./images/sopaipilla-kawaii.jpg"
+        src="./images/sopaipilla-kawaii.png"
         alt="sopaipilla-kawaii"
       />
       <h1 className={styles.header__title}>Actual latino foods</h1>
-      <div>{children}</div>
+      <div className={styles.header__menu}>{children}</div>
     </header>
   );
 }
