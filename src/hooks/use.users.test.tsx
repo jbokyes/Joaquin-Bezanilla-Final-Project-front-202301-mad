@@ -16,6 +16,8 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
     mockPayload = {
       username: "joaquin-test",
       email: "test@joaquin.cl",
+      passwd: "test",
+      token: "test",
     } as unknown as UserStructure;
 
     mockRepo = {
@@ -70,15 +72,17 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
       const mockSuccesfulResponse: UserServerResponse = {
         results: [mockPayload],
       } as unknown as UserServerResponse;
-      (mockRepo.update as jest.Mock).mockResolvedValue(mockSuccesfulResponse);
+      (mockRepo.create as jest.Mock).mockResolvedValueOnce(
+        mockSuccesfulResponse
+      );
       const elements = await screen.findAllByRole("button");
       await act(async () => userEvent.click(elements[1]));
       await act(async () => userEvent.click(elements[2]));
-      expect(mockRepo.create).toHaveBeenCalled();
+      expect(mockRepo.update).toHaveBeenCalled();
     });
     test("Then the addFavourite function in the hook should throw an error if there is no available token", async () => {
       const mockUnsuccesfulResponse: UserServerResponse = {
-        results: { username: "test", email: "test", id: "1" },
+        results: [{ username: "test", email: "test", id: "1" }],
       } as unknown as UserServerResponse;
       const elements = await screen.findAllByRole("button");
       (mockRepo.create as jest.Mock).mockResolvedValueOnce(
