@@ -60,14 +60,14 @@ describe("Given the useFood hook", () => {
     });
     elements = await screen.findAllByRole("button");
   });
-  describe("When TestComponent is rendered", () => {
-    test("then button should be in the document", async () => {
+  describe("When the TestComponent is rendered", () => {
+    test("We should find a button in the document", async () => {
       const element = await screen.findAllByRole("button");
       expect(element[0]).toBeInTheDocument();
     });
   });
 
-  describe("When clicking on the first button", () => {
+  describe("When clicking on the button", () => {
     test("Then it should call the repo method loadFoods", async () => {
       await fireEvent.click(elements[0]);
       expect(mockRepo.loadFoods).toHaveBeenCalled();
