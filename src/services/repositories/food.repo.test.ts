@@ -29,4 +29,22 @@ describe("Given the FoodRepo", () => {
       await expect(result).rejects.toThrow();
     });
   });
+  describe("When loadSingleFood is called", () => {
+    test("Then it should fetch and return the food dish with the id we enter as parameter", async () => {
+      global.fetch = jest.fn().mockResolvedValue({
+        ok: true,
+        json: jest.fn().mockResolvedValue({
+          id: "1",
+          region: "test",
+        }),
+      });
+      const result = await foodMockRepo.loadSingleFood("1");
+      expect(result).toEqual({ id: "1", region: "test" });
+    });
+    test("Then it should throw an error if it returns no data", async () => {
+      global.fetch = jest.fn().mockResolvedValue("error");
+      const result = foodMockRepo.loadSingleFood("1");
+      await expect(result).rejects.toThrow();
+    });
+  });
 });

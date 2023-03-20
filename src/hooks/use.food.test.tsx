@@ -39,13 +39,15 @@ describe("Given the useFood hook", () => {
   const mockRepo: FoodRepo = {
     url: "testing",
     loadFoods: jest.fn(),
+    loadSingleFood: jest.fn(),
   };
   beforeEach(async () => {
     const TestComponent = function () {
-      const { loadFoods } = useFood(mockRepo);
+      const { loadFoods, loadOneFood } = useFood(mockRepo);
       return (
         <div>
           <button onClick={() => loadFoods()}></button>
+          <button onClick={() => loadOneFood("1")}></button>
         </div>
       );
     };
@@ -67,10 +69,17 @@ describe("Given the useFood hook", () => {
     });
   });
 
-  describe("When clicking on the button", () => {
+  describe("When clicking on the first button", () => {
     test("Then it should call the repo method loadFoods", async () => {
       await fireEvent.click(elements[0]);
       expect(mockRepo.loadFoods).toHaveBeenCalled();
+    });
+  });
+  describe("When clicking on the second button", () => {
+    test("Then it should call the repo method loadOneBombardino", async () => {
+      const loadSingleFood = await fireEvent.click(elements[1]);
+      expect(mockRepo.loadSingleFood).toHaveBeenCalled();
+      expect(loadSingleFood).toEqual(true);
     });
   });
 });

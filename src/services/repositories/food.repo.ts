@@ -22,4 +22,14 @@ export class FoodRepo {
     const data = await resp.json();
     return data;
   }
+  async loadSingleFood(
+    foodId: FoodStructure["id"]
+  ): Promise<FoodServerResponse> {
+    const url = this.url + "/details/" + foodId;
+    const resp = await fetch(url);
+    if (!resp.ok)
+      throw new Error("Error getting this one Food Dish" + resp.status);
+    const data: FoodServerResponse = await resp.json();
+    return data;
+  }
 }
