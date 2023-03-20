@@ -30,7 +30,12 @@ describe("Given foodReducer", () => {
         })
       ).toEqual([]);
     });
-    test("Then it should call loadCreator and load bombardinos", () => {
+    test("Then it should return the festival", () => {
+      const action = ac.loadOneCreator(foodDish2);
+      const state = foodReducer(foodDishes, action);
+      expect(state).toEqual({ ...foodDishes, payload: foodDish2 });
+    });
+    test("Then it should call loadCreator and load foods", () => {
       expect(foodReducer([], ac.loadCreator(foodDishes))).toEqual(foodDishes);
     });
     test("Then it should call addCreator and add foodDish2 to an array with foodDish1 and equal foodDishes", () => {
