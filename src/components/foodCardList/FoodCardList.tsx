@@ -7,7 +7,6 @@ import { FoodCard } from "../foodCard/FoodCard";
 export function FoodCardList() {
   const repo = useMemo(() => new FoodRepo(), []);
   const { foods } = useFood(repo);
-
   return (
     <div>
       {foods.map((item: FoodStructure) => (
