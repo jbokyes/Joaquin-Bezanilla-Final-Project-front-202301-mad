@@ -1,0 +1,36 @@
+.footer {
+  padding-top: 7.5rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ede9d5;
+  .palta {
+    width: 87px;
+  }
+  &__actual {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .foods {
+      color: #414a2b;
+      font-size: 30px;
+    }
+    .by {
+      color: #000000;
+      font-size: 15px;
+    }
+  }
+  &__socials {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding-right: 1rem;
+    .icon {
+      height: 40px;
+      position: relative;
+      align-items: center;
+    }
+    .footerimg {
+      height: 5%;
+    }
+  }
+}

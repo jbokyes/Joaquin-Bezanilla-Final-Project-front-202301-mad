@@ -40,6 +40,9 @@ describe("Given the useFood hook", () => {
     url: "testing",
     loadFoods: jest.fn(),
     loadSingleFood: jest.fn(),
+    createFood: jest.fn(),
+    editFood: jest.fn(),
+    deleteFood: jest.fn(),
   };
   beforeEach(async () => {
     const TestComponent = function () {

@@ -1,4 +1,5 @@
 import { AppRouter } from "../app-router/app-router";
+import { Footer } from "../footer/footer";
 import { Header } from "../header/header";
 import { Menu } from "../menu/menu";
 import "./app.css";
@@ -22,6 +23,7 @@ export function App() {
         <Menu options={menuOptions}></Menu>
       </Header>
       <AppRouter></AppRouter>
+      <Footer></Footer>
     </>
   );
 }
