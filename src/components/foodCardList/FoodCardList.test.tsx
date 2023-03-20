@@ -6,7 +6,6 @@ import { MemoryRouter } from "react-router-dom";
 import { FoodStructure } from "../../models/food";
 import { store } from "../../store/store";
 import { FoodCard } from "../foodCard/FoodCard";
-import { FoodCardList } from "./FoodCardList";
 
 const mockFoods = {
   foods: [
