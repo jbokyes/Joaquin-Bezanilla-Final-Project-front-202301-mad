@@ -1,4 +1,8 @@
-import { FoodStructure, FoodServerResponse } from "../../models/food";
+import {
+  FoodStructure,
+  FoodServerResponse,
+  ProtoFoodStructure,
+} from "../../models/food";
 
 export interface FoodRepoStructure {
   loadFoods(): Promise<FoodServerResponse[]>;
@@ -31,5 +35,41 @@ export class FoodRepo {
       throw new Error("Error getting this one Food Dish" + resp.status);
     const data: FoodServerResponse = await resp.json();
     return data;
+  }
+  async createFood(food: ProtoFoodStructure): Promise<FoodServerResponse> {
+    const resp = await fetch(this.url, {
+      method: "POST",
+      body: JSON.stringify(food),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    if (!resp.ok)
+      throw new Error("Error HTTP: " + resp.status + " / " + resp.statusText);
+    const data = await resp.json();
+    return data;
+  }
+  async editFood(food: Partial<FoodStructure>): Promise<FoodServerResponse> {
+    const url = this.url + "/" + food.id;
+    const resp = await fetch(url, {
+      method: "PATCH",
+      body: JSON.stringify(food),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    if (!resp.ok)
+      throw new Error("HTTP Error: " + resp.status + " / " + resp.statusText);
+    const updatedData = await resp.json();
+    return updatedData;
+  }
+
+  async deleteFood(foodId: FoodStructure["id"]): Promise<void> {
+    const url = this.url + "/" + foodId;
+    const resp = await fetch(url, {
+      method: "DELETE",
+    });
+    if (!resp.ok)
+      throw new Error("HTTP Error: " + resp.status + " / " + resp.statusText);
   }
 }
