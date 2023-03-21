@@ -10,7 +10,7 @@ export function FoodCard({ food }: CardProps) {
     <div>
       <li>
         <div className={styles.card__element}>
-          <Link to={"/details"}>
+          <Link to={`/details/${food.id}`}>
             <img
               className={styles.card__image}
               src={food.img}

@@ -30,7 +30,7 @@ describe("Given foodReducer", () => {
         })
       ).toEqual([]);
     });
-    test("Then it should return the festival", () => {
+    test("Then it should return the food", () => {
       const action = ac.loadOneCreator(foodDish2);
       const state = foodReducer(foodDishes, action);
       expect(state).toEqual({ ...foodDishes, payload: foodDish2 });

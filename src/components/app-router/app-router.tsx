@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import About from "../about/about";
 import { MenuOption, menuOptions } from "../app/app";
+import Details from "../details/details";
 import Favourites from "../favourites/favourites";
 import Login from "../login/login";
 import Register from "../register/register";
@@ -25,6 +26,7 @@ export function AppRouter() {
           path={navMenuOptions[4].path}
           element={<Favourites></Favourites>}
         ></Route>
+        <Route path={"/details/:id"} element={<Details></Details>}></Route>
       </Routes>
     </Suspense>
   );

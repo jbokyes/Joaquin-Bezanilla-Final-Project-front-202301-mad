@@ -7,7 +7,7 @@ export function Footer() {
         <img
           className={styles.palta}
           src="./images/typical-latino.jpg"
-          alt=""
+          alt="mexican-avocado"
         />
       </div>
       <div className={styles.footer__actual}>

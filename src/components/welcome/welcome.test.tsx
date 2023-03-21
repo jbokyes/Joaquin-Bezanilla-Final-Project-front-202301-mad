@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Welcome } from "./welcome";
 
-describe("Given the Home component", () => {
+describe("Given the Welcome component", () => {
   describe("When rendering", () => {
     test("then it should render Home", () => {
       render(<Welcome></Welcome>);
