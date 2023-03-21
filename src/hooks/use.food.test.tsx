@@ -3,6 +3,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { act, render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { FoodStructure } from "../models/food";
 import { foodReducer } from "../reducers/food.reducer";
 import { FoodRepo } from "../services/repositories/food.repo";
 import { useFood } from "./use.food";
@@ -35,6 +36,10 @@ describe("Given the useFood hook", () => {
       ],
     },
   });
+  const mockFood = {
+    id: "3",
+    name: "empanada",
+  } as unknown as FoodStructure;
 
   const mockRepo: FoodRepo = {
     url: "testing",
@@ -46,11 +51,18 @@ describe("Given the useFood hook", () => {
   };
   beforeEach(async () => {
     const TestComponent = function () {
-      const { loadFoods, loadOneFood } = useFood(mockRepo);
+      const { loadFoods, loadOneFood, addFood, editFood, deleteFood } =
+        useFood(mockRepo);
       return (
         <div>
           <button onClick={() => loadFoods()}></button>
           <button onClick={() => loadOneFood("1")}></button>
+          <button title="addbutton" onClick={() => addFood(mockFood)}></button>
+          <button title="edit" onClick={() => editFood(mockFood)}></button>
+          <button
+            title="delete"
+            onClick={() => deleteFood(mockFood.id)}
+          ></button>
         </div>
       );
     };
@@ -83,6 +95,24 @@ describe("Given the useFood hook", () => {
       const loadSingleFood = await fireEvent.click(elements[1]);
       expect(mockRepo.loadSingleFood).toHaveBeenCalled();
       expect(loadSingleFood).toEqual(true);
+    });
+  });
+  describe("When createFood is called", () => {
+    test("Then it should create a new food with given details", async () => {
+      await fireEvent.click(elements[2]);
+      expect(mockRepo.createFood).toHaveBeenCalled();
+    });
+  });
+  describe("When editFood is called", () => {
+    test("Then it should change the details of given food to the ones it gives", async () => {
+      await fireEvent.click(elements[3]);
+      expect(mockRepo.editFood).toHaveBeenCalled();
+    });
+  });
+  describe("When deleteFood is called", () => {
+    test("Then it should call the delete mockFood", async () => {
+      await fireEvent.click(elements[4]);
+      expect(mockRepo.deleteFood).toHaveBeenCalled();
     });
   });
 });

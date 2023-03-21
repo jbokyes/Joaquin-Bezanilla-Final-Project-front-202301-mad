@@ -51,12 +51,8 @@ export function useFood(repo: FoodRepo) {
     }
   };
   const deleteFood = async (foodId: FoodStructure["id"]) => {
-    try {
-      await repo.deleteFood(foodId);
-      dispatch(ac.deleteCreator(foodId));
-    } catch (error) {
-      console.log((error as Error).message);
-    }
+    await repo.deleteFood(foodId);
+    dispatch(ac.deleteCreator(foodId));
   };
   return { foods, loadFoods, loadOneFood, addFood, editFood, deleteFood };
 }
