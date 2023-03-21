@@ -6,7 +6,6 @@ type CardProps = {
 };
 
 export function FoodCard({ food }: CardProps) {
-  console.log(food.id);
   return (
     <div>
       <li>
