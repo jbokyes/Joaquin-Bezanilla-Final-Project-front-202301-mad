@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import * as ac from "../reducers/food.action.creator";
 import { FoodRepo } from "../services/repositories/food.repo";
-import { FoodStructure } from "../models/food";
+import { FoodStructure, ProtoFoodStructure } from "../models/food";
 
 export function useFood(repo: FoodRepo) {
   const foods = useSelector((state: RootState) => state.foods);
@@ -32,7 +32,31 @@ export function useFood(repo: FoodRepo) {
       dispatch(ac.loadCreator(foodInfo.results));
     } catch (error) {
       console.log((error as Error).message);
-    } // Array de dependencias?
+    }
   };
-  return { foods, loadFoods, loadOneFood };
+  const addFood = async (food: ProtoFoodStructure) => {
+    try {
+      const foodToAdd = await repo.createFood(food);
+      dispatch(ac.addCreator(foodToAdd.results[0]));
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  };
+  const editFood = async (food: Partial<FoodStructure>) => {
+    try {
+      const foodToEdit = await repo.editFood(food);
+      dispatch(ac.updateCreator(foodToEdit.results[0]));
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  };
+  const deleteFood = async (foodId: FoodStructure["id"]) => {
+    try {
+      await repo.deleteFood(foodId);
+      dispatch(ac.deleteCreator(foodId));
+    } catch (error) {
+      console.log((error as Error).message);
+    }
+  };
+  return { foods, loadFoods, loadOneFood, addFood, editFood, deleteFood };
 }
