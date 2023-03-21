@@ -2,12 +2,12 @@ import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import About from "../about/about";
 import { MenuOption, menuOptions } from "../app/app";
-import Details from "../details/details";
-import Favourites from "../favourites/favourites";
-import Login from "../login/login";
-import Register from "../register/register";
 
 const Home = lazy(() => import("../home/home"));
+const Details = lazy(() => import("../details/details"));
+const Register = lazy(() => import("../register/register"));
+const Login = lazy(() => import("../login/login"));
+const Favourites = lazy(() => import("../favourites/favourites"));
 
 export function AppRouter() {
   const navMenuOptions: MenuOption[] = menuOptions;

@@ -4,7 +4,7 @@ import { UserStructure } from "../../models/user";
 import { UsersApiRepo } from "../../services/repositories/users.repo";
 import styles from "./register.module.scss";
 
-export function Register() {
+function Register() {
   const repo = useMemo(() => new UsersApiRepo(), []);
   const { registerUser } = useUsers(repo);
 
