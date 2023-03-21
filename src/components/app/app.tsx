@@ -15,6 +15,11 @@ export const menuOptions: MenuOption[] = [
   { label: "Register", path: "/register" },
   { label: "Favourites", path: "/favourites" },
 ];
+export const nonMenuOptions: MenuOption[] = [
+  { label: "Details", path: "/details/:id" },
+  { label: "Add", path: "/add" },
+  { label: "Edit", path: "/edit/:id" },
+];
 
 export function App() {
   return (

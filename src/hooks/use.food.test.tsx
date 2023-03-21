@@ -46,7 +46,7 @@ describe("Given the useFood hook", () => {
     loadFoods: jest.fn(),
     loadSingleFood: jest.fn(),
     createFood: jest.fn(),
-    editFood: jest.fn(),
+    patchFood: jest.fn(),
     deleteFood: jest.fn(),
   };
   beforeEach(async () => {
@@ -106,7 +106,7 @@ describe("Given the useFood hook", () => {
   describe("When editFood is called", () => {
     test("Then it should change the details of given food to the ones it gives", async () => {
       await fireEvent.click(elements[3]);
-      expect(mockRepo.editFood).toHaveBeenCalled();
+      expect(mockRepo.patchFood).toHaveBeenCalled();
     });
   });
   describe("When deleteFood is called", () => {

@@ -89,7 +89,7 @@ describe("Given the FoodRepo", () => {
           .fn()
           .mockResolvedValue({ id: "10", name: "choripan", region: "chile" }),
       });
-      await foodMockRepo.editFood(foodToUpdate);
+      await foodMockRepo.patchFood(foodToUpdate);
       expect(foodToUpdate).toEqual({
         id: "10",
         name: "choripan",
@@ -98,7 +98,7 @@ describe("Given the FoodRepo", () => {
     });
     test("Then it should throw error when giving invalid values", async () => {
       global.fetch = jest.fn().mockResolvedValue("Error");
-      const update = foodMockRepo.editFood({
+      const update = foodMockRepo.patchFood({
         id: "10",
         name: "choripan",
         region: "chile",

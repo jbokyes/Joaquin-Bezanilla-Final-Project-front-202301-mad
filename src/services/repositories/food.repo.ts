@@ -49,8 +49,8 @@ export class FoodRepo {
     const data = await resp.json();
     return data;
   }
-  async editFood(food: Partial<FoodStructure>): Promise<FoodServerResponse> {
-    const url = this.url + "/" + food.id;
+  async patchFood(food: Partial<FoodStructure>): Promise<FoodServerResponse> {
+    const url = this.url + "/edit/" + food.id;
     const resp = await fetch(url, {
       method: "PATCH",
       body: JSON.stringify(food),

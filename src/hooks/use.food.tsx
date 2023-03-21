@@ -44,7 +44,9 @@ export function useFood(repo: FoodRepo) {
   };
   const editFood = async (food: Partial<FoodStructure>) => {
     try {
-      const foodToEdit = await repo.editFood(food);
+      console.log("ha entrado en el edit food del hook");
+      const foodToEdit = await repo.patchFood(food);
+      console.log("esto es food to edit", foodToEdit);
       dispatch(ac.updateCreator(foodToEdit.results[0]));
     } catch (error) {
       console.log((error as Error).message);
