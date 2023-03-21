@@ -29,7 +29,7 @@ export function useFood(repo: FoodRepo) {
   const loadOneFood = async (foodId: FoodStructure["id"]) => {
     try {
       const foodInfo = await repo.loadSingleFood(foodId);
-      dispatch(ac.loadCreator(foodInfo.results));
+      dispatch(ac.loadOneCreator(foodInfo.results[0]));
     } catch (error) {
       console.log((error as Error).message);
     }
