@@ -41,6 +41,8 @@ describe("Given the useFood hook", () => {
     name: "empanada",
   } as unknown as FoodStructure;
 
+  const mockFile = new File(["image"], "test");
+
   const mockRepo: FoodRepo = {
     url: "testing",
     loadFoods: jest.fn(),
@@ -57,8 +59,14 @@ describe("Given the useFood hook", () => {
         <div>
           <button onClick={() => loadFoods()}></button>
           <button onClick={() => loadOneFood("1")}></button>
-          <button title="addbutton" onClick={() => addFood(mockFood)}></button>
-          <button title="edit" onClick={() => editFood(mockFood)}></button>
+          <button
+            title="addbutton"
+            onClick={() => addFood(mockFood, mockFile)}
+          ></button>
+          <button
+            title="edit"
+            onClick={() => editFood(mockFood, mockFile)}
+          ></button>
           <button
             title="delete"
             onClick={() => deleteFood(mockFood.id)}
