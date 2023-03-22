@@ -5,5 +5,4 @@ export const firebaseConfig = {
   storageBucket: "latino-food-9e36e.appspot.com",
   messagingSenderId: process.env.FB_MSID,
   appId: process.env.FB_APPID,
-  measurementId: process.env.FB_MEASUREID,
 };

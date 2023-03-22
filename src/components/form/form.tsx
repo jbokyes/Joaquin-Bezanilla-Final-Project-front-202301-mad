@@ -17,7 +17,7 @@ export function Form() {
   const type = foodToEdit === undefined ? "add" : "";
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
-    const form = event.target as HTMLFormElement;
+    const form = event.currentTarget as HTMLFormElement;
     const inputs = form.querySelectorAll("input");
     const newFood: Partial<FoodStructure> = {
       name: inputs[0].value,
@@ -25,13 +25,17 @@ export function Form() {
       diet: inputs[2].value,
       region: inputs[3].value,
       info: inputs[4].value,
+      img: inputs[5].value,
     };
+    const image = (form.elements[5] as HTMLFormElement).files?.item(0);
+    console.log(form.elements[5].files.item(0));
     if (type === "add") {
-      addFood(newFood as ProtoFoodStructure);
+      addFood(newFood as ProtoFoodStructure, image);
     } else {
       newFood.id = foodToEdit!.id;
-      editFood(newFood);
+      editFood(newFood, image);
     }
+    form.reset();
   };
 
   return (

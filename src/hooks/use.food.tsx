@@ -4,6 +4,7 @@ import { AppDispatch, RootState } from "../store/store";
 import * as ac from "../reducers/food.action.creator";
 import { FoodRepo } from "../services/repositories/food.repo";
 import { FoodStructure, ProtoFoodStructure } from "../models/food";
+import { newImage } from "../components/firebase/firebase-food";
 
 export function useFood(repo: FoodRepo) {
   const foods = useSelector((state: RootState) => state.foods);
@@ -34,19 +35,19 @@ export function useFood(repo: FoodRepo) {
       console.log((error as Error).message);
     }
   };
-  const addFood = async (food: ProtoFoodStructure) => {
+  const addFood = async (food: ProtoFoodStructure, file: File) => {
     try {
+      await newImage(food, file);
       const foodToAdd = await repo.createFood(food);
       dispatch(ac.addCreator(foodToAdd.results[0]));
     } catch (error) {
       console.log((error as Error).message);
     }
   };
-  const editFood = async (food: Partial<FoodStructure>) => {
+  const editFood = async (food: Partial<FoodStructure>, file: File) => {
     try {
-      console.log("ha entrado en el edit food del hook");
+      await newImage(food, file);
       const foodToEdit = await repo.patchFood(food);
-      console.log("esto es food to edit", foodToEdit);
       dispatch(ac.updateCreator(foodToEdit.results[0]));
     } catch (error) {
       console.log((error as Error).message);

@@ -7,7 +7,7 @@ const app = initializeApp(firebaseConfig);
 
 export const storage = getStorage(app);
 
-export const newImage = async (info: Partial<FoodStructure>, file?: File) => {
+export const newImage = async (info: Partial<FoodStructure>, file: File) => {
   if (!file) {
     return;
   }
