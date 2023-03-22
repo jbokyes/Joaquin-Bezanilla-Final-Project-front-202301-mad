@@ -7,8 +7,10 @@ import { FoodRepo } from "../../services/repositories/food.repo";
 
 export function Form() {
   const { id } = useParams();
+  console.log(id);
   const repo = useMemo(() => new FoodRepo(), []);
   const { foods } = useFood(repo);
+  console.log(foods);
   let foodToEdit = foods.find((item) => item.id === id);
   const { editFood, addFood } = useFood(repo);
 
@@ -27,9 +29,7 @@ export function Form() {
     if (type === "add") {
       addFood(newFood as ProtoFoodStructure);
     } else {
-      console.log(newFood, "new food del form");
       newFood.id = foodToEdit!.id;
-      console.log(`ha entrado en el edit`);
       editFood(newFood);
     }
   };
