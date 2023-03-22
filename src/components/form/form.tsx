@@ -28,7 +28,6 @@ export function Form() {
       img: inputs[5].value,
     };
     const image = (form.elements[5] as HTMLFormElement).files?.item(0);
-    console.log(form.elements[5].files.item(0));
     if (type === "add") {
       addFood(newFood as ProtoFoodStructure, image);
     } else {
