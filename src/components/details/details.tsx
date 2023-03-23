@@ -10,13 +10,22 @@ export type CardProps = {
 export default function Details() {
   const { id } = useParams();
   const repo = useMemo(() => new FoodRepo(), []);
-  const { foods } = useFood(repo);
+  const { foods, deleteFood } = useFood(repo);
 
   const foodDetails = foods.find((item) => item.id === id);
+  const handleDelete = () => {
+    deleteFood(foodDetails!.id);
+  };
 
   return (
     <>
       <div>
+        <Link to={`/home`} relative="path">
+          <button onClick={handleDelete}> Delete </button>
+        </Link>
+        <Link to={`/edit/${id}`} relative="path">
+          <button> Edit </button>
+        </Link>
         <h2>Details</h2>
         <span>
           <span>

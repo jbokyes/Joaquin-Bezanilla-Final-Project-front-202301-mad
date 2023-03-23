@@ -25,7 +25,6 @@ export function Form() {
       diet: inputs[2].value,
       region: inputs[3].value,
       info: inputs[4].value,
-      img: inputs[5].value,
     };
     const image = (form.elements[5] as HTMLFormElement).files?.item(0);
     if (type === "add") {
@@ -86,7 +85,7 @@ export function Form() {
       </div>
       <div className="form-line">
         <label htmlFor="">Image: </label>
-        <input type="file" defaultValue={foodToEdit?.img} />
+        <input type="file" />
       </div>
       <div className="button-div">
         <button type="submit">SUBMIT</button>

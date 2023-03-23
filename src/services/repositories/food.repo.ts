@@ -37,11 +37,13 @@ export class FoodRepo {
     return data;
   }
   async createFood(food: ProtoFoodStructure): Promise<FoodServerResponse> {
-    const resp = await fetch(this.url, {
+    console.log("entré al create de create");
+    const resp = await fetch(this.url + "/add", {
       method: "POST",
       body: JSON.stringify(food),
       headers: {
         "Content-type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
     });
     console.log(resp);
@@ -57,6 +59,7 @@ export class FoodRepo {
       body: JSON.stringify(food),
       headers: {
         "Content-type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
     });
     if (!resp.ok)
@@ -66,9 +69,14 @@ export class FoodRepo {
   }
 
   async deleteFood(foodId: FoodStructure["id"]): Promise<void> {
+    console.log("entramos a delete food");
     const url = this.url + "/" + foodId;
     const resp = await fetch(url, {
       method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
     });
     if (!resp.ok)
       throw new Error("HTTP Error: " + resp.status + " / " + resp.statusText);

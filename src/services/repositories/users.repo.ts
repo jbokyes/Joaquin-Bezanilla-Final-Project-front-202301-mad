@@ -30,7 +30,8 @@ export class UsersApiRepo implements UserRepo<UserServerResponse> {
       throw new Error("HTTP Error " + resp.status + " / " + resp.statusText);
 
     const userData = await resp.json();
-
+    if (userData.token)
+      JSON.stringify(localStorage.setItem("token", userData.token));
     return userData;
   }
 

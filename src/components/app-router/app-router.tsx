@@ -3,13 +3,13 @@ import { Route, Routes } from "react-router-dom";
 import About from "../about/about";
 import { MenuOption, menuOptions, nonMenuOptions } from "../app/app";
 import Add from "../form/add";
-import Edit from "../form/edit";
 
 const Home = lazy(() => import("../home/home"));
 const Details = lazy(() => import("../details/details"));
 const Register = lazy(() => import("../register/register"));
 const Login = lazy(() => import("../login/login"));
 const Favourites = lazy(() => import("../favourites/favourites"));
+const Edit = lazy(() => import("../form/edit"));
 
 export function AppRouter() {
   const navMenuOptions: MenuOption[] = menuOptions;
