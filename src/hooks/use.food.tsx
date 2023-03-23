@@ -4,7 +4,7 @@ import { AppDispatch, RootState } from "../store/store";
 import * as ac from "../reducers/food.action.creator";
 import { FoodRepo } from "../services/repositories/food.repo";
 import { FoodStructure, ProtoFoodStructure } from "../models/food";
-import { newImage } from "../components/firebase/firebase-food";
+import { newImage } from "../services/firebase/firebase-food";
 
 export function useFood(repo: FoodRepo) {
   const foods = useSelector((state: RootState) => state.foods);
@@ -46,7 +46,7 @@ export function useFood(repo: FoodRepo) {
   };
   const editFood = async (food: Partial<FoodStructure>, file: File) => {
     try {
-      await newImage(food, file);
+      await newImage(food, file); // detiene test
       const foodToEdit = await repo.patchFood(food);
       dispatch(ac.updateCreator(foodToEdit.results[0]));
     } catch (error) {

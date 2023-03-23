@@ -44,6 +44,7 @@ export class FoodRepo {
         "Content-type": "application/json",
       },
     });
+    console.log(resp);
     if (!resp.ok)
       throw new Error("Error HTTP: " + resp.status + " / " + resp.statusText);
     const data = await resp.json();

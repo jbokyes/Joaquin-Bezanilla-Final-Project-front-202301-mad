@@ -2,46 +2,36 @@
 /* eslint-disable testing-library/no-unnecessary-act */
 import { configureStore } from "@reduxjs/toolkit";
 import { act, render, screen, fireEvent } from "@testing-library/react";
+import * as ac from "../reducers/food.action.creator";
 import { Provider } from "react-redux";
 import { FoodStructure } from "../models/food";
 import { foodReducer } from "../reducers/food.reducer";
 import { FoodRepo } from "../services/repositories/food.repo";
 import { useFood } from "./use.food";
 
+jest.mock("../services/firebase/firebase-food");
+
 describe("Given the useFood hook", () => {
+  const mockFood = {
+    id: "3",
+    name: "empanada",
+    img: "charli",
+  } as unknown as FoodStructure;
+  let initialState = [
+    { id: "3", img: "charli", name: "empanada" } as FoodStructure,
+  ];
+  const action = ac.addCreator(mockFood);
+  const updateAction = ac.updateCreator(mockFood);
   let elements: HTMLElement[];
 
   const mockStore = configureStore({
     reducer: { foods: foodReducer },
     preloadedState: {
-      foods: [
-        {
-          id: "20",
-          name: "comida rica",
-          cuisine: "cocina test",
-          diet: "nada",
-          info: "hola test",
-          region: "CHILE",
-          img: "test link",
-        },
-        {
-          id: "25",
-          name: "comida mala",
-          cuisine: "cocina test",
-          diet: "veganisimo",
-          info: "chao test",
-          region: "argentina :(",
-          img: "link test",
-        },
-      ],
+      foods: [],
     },
   });
-  const mockFood = {
-    id: "3",
-    name: "empanada",
-  } as unknown as FoodStructure;
 
-  const mockFile = new File(["image"], "test");
+  const mockFile = new File(["image"], "test.jpeg");
 
   const mockRepo: FoodRepo = {
     url: "testing",
@@ -74,6 +64,7 @@ describe("Given the useFood hook", () => {
         </div>
       );
     };
+
     await act(async () => {
       render(
         <>
@@ -99,7 +90,7 @@ describe("Given the useFood hook", () => {
     });
   });
   describe("When clicking on the second button", () => {
-    test("Then it should call the repo method loadOneBombardino", async () => {
+    test("Then it should call the repo method loadSingleFood", async () => {
       const loadSingleFood = await fireEvent.click(elements[1]);
       expect(mockRepo.loadSingleFood).toHaveBeenCalled();
       expect(loadSingleFood).toEqual(true);
@@ -109,12 +100,16 @@ describe("Given the useFood hook", () => {
     test("Then it should create a new food with given details", async () => {
       await fireEvent.click(elements[2]);
       expect(mockRepo.createFood).toHaveBeenCalled();
+      const state = foodReducer(initialState, action);
+      expect(state).toContainEqual(action.payload);
     });
   });
   describe("When editFood is called", () => {
     test("Then it should change the details of given food to the ones it gives", async () => {
       await fireEvent.click(elements[3]);
       expect(mockRepo.patchFood).toHaveBeenCalled();
+      const state = foodReducer(initialState, updateAction);
+      expect(state).toContainEqual(action.payload);
     });
   });
   describe("When deleteFood is called", () => {
