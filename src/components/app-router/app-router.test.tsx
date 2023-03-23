@@ -10,7 +10,13 @@ describe("Given AppRouter component", () => {
     render(
       <Provider store={store}>
         <Router
-          initialEntries={["/", "/about", "/login", "/register", "/favourites"]}
+          initialEntries={[
+            "/home",
+            "/about",
+            "/login",
+            "/register",
+            "/favourites",
+          ]}
           initialIndex={number}
         >
           <AppRouter></AppRouter>
