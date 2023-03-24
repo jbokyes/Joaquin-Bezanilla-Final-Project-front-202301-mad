@@ -15,14 +15,14 @@ jest.mock("react-router-dom", () => ({
 }));
 jest.mock("../../hooks/use.food");
 
-const mockRepo: FoodRepo = {
+const mockRepo = {
   url: "testing",
   loadFoods: jest.fn(),
   loadSingleFood: jest.fn(),
   createFood: jest.fn(),
   patchFood: jest.fn(),
   deleteFood: jest.fn(),
-};
+} as unknown as FoodRepo;
 describe("Given the Form component", () => {
   let elements: HTMLElement[];
 

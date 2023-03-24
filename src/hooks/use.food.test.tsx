@@ -33,14 +33,14 @@ describe("Given the useFood hook", () => {
 
   const mockFile = new File(["image"], "test.jpeg");
 
-  const mockRepo: FoodRepo = {
+  const mockRepo = {
     url: "testing",
     loadFoods: jest.fn(),
     loadSingleFood: jest.fn(),
     createFood: jest.fn(),
     patchFood: jest.fn(),
     deleteFood: jest.fn(),
-  };
+  } as unknown as FoodRepo;
   beforeEach(async () => {
     const TestComponent = function () {
       const { loadFoods, loadOneFood, addFood, editFood, deleteFood } =

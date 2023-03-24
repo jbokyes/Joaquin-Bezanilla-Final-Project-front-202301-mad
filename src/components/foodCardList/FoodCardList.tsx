@@ -14,7 +14,6 @@ export function FoodCardList() {
   }, [loadFoods]);
 
   const handlePage = (pageChange: number) => {
-    debugger;
     loadFoods(pageChange);
   };
   return (

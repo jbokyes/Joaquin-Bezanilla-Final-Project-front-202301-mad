@@ -16,7 +16,9 @@ describe("Given the FoodRepo", () => {
           region: "CHILE",
         }),
       });
-      const result = await foodMockRepo.loadFoods();
+      const pageChange = 1;
+      const region = "all";
+      const result = await foodMockRepo.loadFoods(pageChange, region);
       expect(result).toEqual({ region: "CHILE" });
     });
     test("Then it should throw an error when the fetch fails to return data", async () => {
@@ -26,7 +28,9 @@ describe("Given the FoodRepo", () => {
           region: "CHILE",
         }),
       });
-      const result = foodMockRepo.loadFoods();
+      const pageChange1 = 1;
+      const region1 = "all";
+      const result = foodMockRepo.loadFoods(pageChange1, region1);
       await expect(result).rejects.toThrow();
     });
   });
