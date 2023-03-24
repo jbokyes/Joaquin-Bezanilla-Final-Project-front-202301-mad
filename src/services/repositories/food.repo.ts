@@ -28,7 +28,7 @@ export class FoodRepo {
     this.nowPage = this.nowPage + pageChange;
     if (this.nowPage === 0 || pageChange === 0) this.nowPage = 1;
     const pageString = this.nowPage.toString();
-    const url1 = this.url + "/?page=" + pageString;
+    const url1 = this.url + "/?page=" + pageString + "&region=" + region;
     const resp = await fetch(url1);
     if (!resp.ok)
       throw new Error("Wrong fetch" + resp.status + "/" + resp.statusText);

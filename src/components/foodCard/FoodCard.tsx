@@ -7,8 +7,8 @@ type CardProps = {
 
 export function FoodCard({ food }: CardProps) {
   return (
-    <div>
-      <li>
+    <div className={styles.card}>
+      <li className={styles.card__list}>
         <div className={styles.card__element}>
           <Link to={`/details/${food.id}`}>
             <img

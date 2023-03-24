@@ -14,6 +14,7 @@ export function FoodCardList() {
   }, [loadFoods]);
 
   const handlePage = (pageChange: number) => {
+    debugger;
     loadFoods(pageChange);
   };
   return (
@@ -24,18 +25,11 @@ export function FoodCardList() {
       <div className="buttons">
         <button
           className="style.productsButtonsPrev"
-          onClick={() => {
-            handlePage(-1);
-          }}
+          onClick={() => handlePage(-1)}
         >
           -
         </button>
-        <button
-          className=""
-          onClick={() => {
-            handlePage(+1);
-          }}
-        >
+        <button className="" onClick={() => handlePage(+1)}>
           +
         </button>
       </div>

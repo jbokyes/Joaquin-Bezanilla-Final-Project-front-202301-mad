@@ -12,7 +12,7 @@ export function useFood(repo: FoodRepo) {
   const dispatch = useDispatch<AppDispatch>();
 
   const loadFoods = useCallback(
-    async (pageChange: number = 0, region: string = "All") => {
+    async (pageChange: number = 0, region: string = "all") => {
       try {
         const data = await repo.loadFoods(pageChange, region);
         dispatch(ac.loadCreator(data.results));
