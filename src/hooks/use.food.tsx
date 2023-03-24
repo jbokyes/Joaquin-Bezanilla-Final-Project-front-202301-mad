@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import * as ac from "../reducers/food.action.creator";
@@ -12,9 +12,9 @@ export function useFood(repo: FoodRepo) {
   const dispatch = useDispatch<AppDispatch>();
 
   const loadFoods = useCallback(
-    async (region?: string) => {
+    async (pageChange: number = 0, region: string = "All") => {
       try {
-        const data = await repo.loadFoods();
+        const data = await repo.loadFoods(pageChange, region);
         dispatch(ac.loadCreator(data.results));
       } catch (error) {
         console.log((error as Error).message);
@@ -22,10 +22,6 @@ export function useFood(repo: FoodRepo) {
     },
     [dispatch, repo]
   );
-
-  useEffect(() => {
-    loadFoods();
-  }, [loadFoods]);
 
   const loadOneFood = async (foodId: FoodStructure["id"]) => {
     try {

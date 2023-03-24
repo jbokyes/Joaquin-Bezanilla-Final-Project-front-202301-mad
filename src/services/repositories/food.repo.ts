@@ -5,7 +5,7 @@ import {
 } from "../../models/food";
 
 export interface FoodRepoStructure {
-  loadFoods(): Promise<FoodServerResponse[]>;
+  loadFoods(region: string, pageChange: number): Promise<FoodServerResponse[]>;
   loadSpecificFood(id: FoodStructure["id"]): Promise<FoodServerResponse>;
   createFood(food: FoodStructure): Promise<FoodServerResponse>;
   updateFood(food: Partial<FoodStructure>): Promise<FoodServerResponse>;
@@ -15,12 +15,21 @@ export interface FoodRepoStructure {
 export class FoodRepo {
   // Recordar tipado cuando agregue funciones
   url: string;
+  nowPage: number;
   constructor() {
     this.url = "http://localhost:4200/foods";
+    this.nowPage = 1;
   }
 
-  async loadFoods(): Promise<FoodServerResponse> {
-    const resp = await fetch(this.url);
+  async loadFoods(
+    pageChange: number,
+    region: string
+  ): Promise<FoodServerResponse> {
+    this.nowPage = this.nowPage + pageChange;
+    if (this.nowPage === 0 || pageChange === 0) this.nowPage = 1;
+    const pageString = this.nowPage.toString();
+    const url1 = this.url + "/?page=" + pageString;
+    const resp = await fetch(url1);
     if (!resp.ok)
       throw new Error("Wrong fetch" + resp.status + "/" + resp.statusText);
     const data = await resp.json();
