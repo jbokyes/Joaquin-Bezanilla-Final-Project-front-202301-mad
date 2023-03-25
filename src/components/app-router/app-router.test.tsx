@@ -35,7 +35,7 @@ describe("Given AppRouter component", () => {
     test("Then, the title 'What is this site for?' from Home should be in the screen", async () => {
       await waitFor(async () => prepareTestFunction(1));
       const element = await screen.findByRole("heading", {
-        name: "About",
+        name: "About this Page",
       });
       expect(element).toBeInTheDocument();
     });
