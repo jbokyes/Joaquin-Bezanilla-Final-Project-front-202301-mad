@@ -8,7 +8,6 @@ import { newImage } from "../services/firebase/firebase-food";
 
 export function useFood(repo: FoodRepo) {
   const foods = useSelector((state: RootState) => state.foods);
-  // const usersState = useSelector((state: RootState) => state.users);
   const dispatch = useDispatch<AppDispatch>();
 
   const loadFoods = useCallback(
