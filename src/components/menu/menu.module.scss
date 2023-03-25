@@ -6,9 +6,14 @@
   visibility: hidden;
   position: absolute;
   right: 0.5rem;
+  border: 0.5px solid #6b5738;
   @media (min-width: 550px) {
     flex-direction: row;
     visibility: initial;
+    border: none;
+    text-align: center;
+    position: absolute;
+    top: 2.5%;
   }
   a {
     color: #414a2b;
