@@ -32,6 +32,7 @@ describe("Given the useFood hook", () => {
   });
 
   const mockFile = new File(["image"], "test.jpeg");
+  const mockFormImage = "image";
 
   const mockRepo = {
     url: "testing",
@@ -55,11 +56,15 @@ describe("Given the useFood hook", () => {
           ></button>
           <button
             title="edit"
-            onClick={() => editFood(mockFood, mockFile)}
+            onClick={() => editFood(mockFood, mockFile, mockFormImage)}
           ></button>
           <button
             title="delete"
             onClick={() => deleteFood(mockFood.id)}
+          ></button>
+          <button
+            title="edit with no formImage"
+            onClick={() => editFood(mockFood, mockFile, "")}
           ></button>
         </div>
       );
@@ -104,9 +109,17 @@ describe("Given the useFood hook", () => {
       expect(state).toContainEqual(action.payload);
     });
   });
-  describe("When editFood is called", () => {
+  describe("When editFood is called and it has a mockFile", () => {
     test("Then it should change the details of given food to the ones it gives", async () => {
       await fireEvent.click(elements[3]);
+      expect(mockRepo.patchFood).toHaveBeenCalled();
+      const state = foodReducer(initialState, updateAction);
+      expect(state).toContainEqual(action.payload);
+    });
+  });
+  describe("When editFood is called and it has no mockfile as a previous image", () => {
+    test("Then it should change the details of given food to the ones it gives", async () => {
+      await fireEvent.click(elements[5]);
       expect(mockRepo.patchFood).toHaveBeenCalled();
       const state = foodReducer(initialState, updateAction);
       expect(state).toContainEqual(action.payload);

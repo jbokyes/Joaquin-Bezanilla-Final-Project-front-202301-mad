@@ -41,9 +41,13 @@ export function useFood(repo: FoodRepo) {
       console.log((error as Error).message);
     }
   };
-  const editFood = async (food: Partial<FoodStructure>, file: File) => {
+  const editFood = async (
+    food: Partial<FoodStructure>,
+    file: File,
+    formImage: string
+  ) => {
     try {
-      await newImage(food, file); // detiene test
+      file ? await newImage(food, file) : (food.img = formImage); // detiene test
       const foodToEdit = await repo.patchFood(food);
       dispatch(ac.updateCreator(foodToEdit.results[0]));
     } catch (error) {

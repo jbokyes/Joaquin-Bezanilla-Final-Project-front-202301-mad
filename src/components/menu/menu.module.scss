@@ -6,6 +6,10 @@
   visibility: hidden;
   position: absolute;
   right: 0.5rem;
+  @media (min-width: 550px) {
+    flex-direction: row;
+    visibility: initial;
+  }
   a {
     color: #414a2b;
     text-decoration: none;
@@ -20,4 +24,7 @@ nav:hover {
 }
 .burgermenu {
   width: 2.5rem;
+  @media (min-width: 550px) {
+    display: none;
+  }
 }

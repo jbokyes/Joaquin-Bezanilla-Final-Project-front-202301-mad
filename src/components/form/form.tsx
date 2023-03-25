@@ -31,7 +31,7 @@ export function Form() {
       addFood(newFood as ProtoFoodStructure, image);
     } else {
       newFood.id = foodToEdit!.id;
-      editFood(newFood, image);
+      editFood(newFood, image, foodToEdit!.img);
     }
     form.reset();
   };
