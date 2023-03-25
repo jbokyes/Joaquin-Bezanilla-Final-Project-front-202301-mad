@@ -7,5 +7,9 @@
   &__p {
     color: #414a2b;
     font-size: 36px;
+    text-align: center;
+    @media (min-width: 550px) {
+      text-align: initial;
+    }
   }
 }

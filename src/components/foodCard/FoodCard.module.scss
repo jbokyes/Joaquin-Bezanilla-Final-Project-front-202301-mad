@@ -5,12 +5,16 @@
 .card__image {
   width: 150px;
   border: 1px solid #6b5738;
+  padding: 0.3rem;
 }
 .card {
   width: 150px;
-  background-color: aliceblue;
+  background-color: #ede9d5;
 }
 .foodname {
   display: flex;
   justify-content: center;
+  color: #6b5738;
+  background-color: #f5ebeb;
+  border: 0.7px solid #6b5738;
 }

@@ -7,7 +7,7 @@
   position: absolute;
   right: 0.5rem;
   border: 0.5px solid #6b5738;
-  @media (min-width: 550px) {
+  @media (min-width: 640px) {
     flex-direction: row;
     visibility: initial;
     border: none;
@@ -29,7 +29,8 @@ nav:hover {
 }
 .burgermenu {
   width: 2.5rem;
-  @media (min-width: 550px) {
+  display: initial;
+  @media (min-width: 640px) {
     display: none;
   }
 }

@@ -1,3 +1,33 @@
-* {
-  box-sizing: border-box;
+.details {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+  gap: 3rem;
+  align-items: center;
+  background-color: #ede9d5;
+  @media (min-width: 550px) {
+    align-items: baseline;
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+  }
+  &__title {
+    color: #414a2b;
+  }
+  &__image {
+    width: 130px;
+    @media (max-width: 550px) {
+      width: 170px;
+      padding-left: 4rem;
+    }
+  }
+  .card__details {
+    display: flex;
+    flex-direction: column;
+    list-style: circle;
+    gap: 0.7rem;
+    color: #7d3017;
+  }
 }

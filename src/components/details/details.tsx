@@ -19,30 +19,30 @@ export default function Details() {
 
   return (
     <>
-      <div>
-        <Link to={`/home`} relative="path">
-          <button onClick={handleDelete}> Delete </button>
-        </Link>
-        <Link to={`/edit/${id}`} relative="path">
-          <button> Edit </button>
-        </Link>
-        <h2>Details</h2>
-        <span>
-          <span>
-            <div>
-              <img
-                src={foodDetails?.img}
-                alt="Details Card"
-                className={styles.details__image}
-              />
-            </div>
-            <ul className={styles.card__details}>
-              <li>Name:{foodDetails?.name}</li>
-              <li>Region:{foodDetails?.region}</li>
-              <li>Description:{foodDetails?.info}</li>
-            </ul>
-          </span>
-        </span>
+      <div className={styles.details}>
+        <div className={styles.details__buttons}>
+          <Link to={`/home`} relative="path">
+            <button onClick={handleDelete}> Delete </button>
+          </Link>
+          <Link to={`/edit/${id}`} relative="path">
+            <button> Edit </button>
+          </Link>
+        </div>
+        <h2 className={styles.details__title}>{foodDetails?.name} details</h2>
+        <div>
+          <img
+            src={foodDetails?.img}
+            alt="Details Card"
+            className={styles.details__image}
+          />
+        </div>
+        <ul className={styles.card__details}>
+          <li>Name: {foodDetails?.name}</li>
+          <li>Region: {foodDetails?.region}</li>
+          <li>Friendly to diets: {foodDetails?.diet}</li>
+          <li>Description: {foodDetails?.info}</li>
+        </ul>
+
         <div className={styles.button_container}>
           <div className={styles.button_container_flex}>
             <Link to={"/home"}>

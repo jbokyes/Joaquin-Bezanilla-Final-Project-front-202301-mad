@@ -1,0 +1,16 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2.5rem;
+}
+.form__input {
+  width: 15rem;
+  border-style: none;
+  border-bottom: solid;
+  border-color: #617143;
+  background-color: #ede9d5;
+}
+.form__image {
+  padding-top: 1rem;
+}

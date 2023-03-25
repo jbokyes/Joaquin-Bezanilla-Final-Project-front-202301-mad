@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useFood } from "../../hooks/use.food";
 import { FoodStructure, ProtoFoodStructure } from "../../models/food";
 import { FoodRepo } from "../../services/repositories/food.repo";
-
+import styles from "./form.module.scss";
 export function Form() {
   const { id } = useParams();
   console.log(id);
@@ -38,12 +38,13 @@ export function Form() {
 
   return (
     <form action="" onSubmit={handleSubmit} id="form" data-testid="form">
-      <div className="form-line">
+      <div className={"form"}>
         <label htmlFor="">Name: </label>
         <input
           type="text"
-          placeholder="Rick"
+          placeholder="Food name"
           defaultValue={foodToEdit?.name}
+          className={styles.form__input}
           required
         />
       </div>
@@ -51,8 +52,9 @@ export function Form() {
         <label htmlFor="">Cuisine: </label>
         <input
           type="text"
-          placeholder="Rick"
+          placeholder="Food cuisine"
           defaultValue={foodToEdit?.cuisine}
+          className={styles.form__input}
           required
         />
       </div>
@@ -62,6 +64,7 @@ export function Form() {
           type="text"
           placeholder="Rick"
           defaultValue={foodToEdit?.region}
+          className={styles.form__input}
           required
         />
       </div>
@@ -71,6 +74,7 @@ export function Form() {
           type="text"
           placeholder="Rick"
           defaultValue={foodToEdit?.diet}
+          className={styles.form__input}
           required
         />
       </div>
@@ -80,10 +84,11 @@ export function Form() {
           type="text"
           placeholder="Rick"
           defaultValue={foodToEdit?.info}
+          className={styles.form__input}
           required
         />
       </div>
-      <div className="form-line">
+      <div className={styles.form__image}>
         <label htmlFor="">Image: </label>
         <input type="file" />
       </div>

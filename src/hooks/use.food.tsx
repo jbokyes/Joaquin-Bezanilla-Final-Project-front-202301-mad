@@ -46,7 +46,7 @@ export function useFood(repo: FoodRepo) {
     formImage: string
   ) => {
     try {
-      file ? await newImage(food, file) : (food.img = formImage); // detiene test
+      file ? await newImage(food, file) : (food.img = formImage);
       const foodToEdit = await repo.patchFood(food);
       dispatch(ac.updateCreator(foodToEdit.results[0]));
     } catch (error) {
