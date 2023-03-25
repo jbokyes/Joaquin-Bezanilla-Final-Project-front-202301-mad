@@ -37,7 +37,6 @@ export default function Details() {
               />
             </div>
             <ul className={styles.card__details}>
-              <li>{foodDetails?.img}</li>
               <li>Name:{foodDetails?.name}</li>
               <li>Region:{foodDetails?.region}</li>
               <li>Description:{foodDetails?.info}</li>

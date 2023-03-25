@@ -22,8 +22,8 @@ export function Form() {
     const newFood: Partial<FoodStructure> = {
       name: inputs[0].value,
       cuisine: inputs[1].value,
-      diet: inputs[2].value,
-      region: inputs[3].value,
+      region: inputs[2].value,
+      diet: inputs[3].value,
       info: inputs[4].value,
     };
     const image = (form.elements[5] as HTMLFormElement).files?.item(0);

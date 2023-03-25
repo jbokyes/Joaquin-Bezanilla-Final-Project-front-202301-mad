@@ -13,25 +13,49 @@ export function FoodCardList() {
     loadFoods();
   }, [loadFoods]);
 
-  const handlePage = (pageChange: number) => {
-    loadFoods(pageChange);
+  const handlePage = (pageChange?: number, region?: string) => {
+    loadFoods(pageChange, region);
   };
   return (
-    <div className={styles.cardcontainer}>
-      {foods.map((item: FoodStructure) => (
-        <FoodCard food={item} key={item.id}></FoodCard>
-      ))}
-      <div className="buttons">
-        <button
-          className="style.productsButtonsPrev"
-          onClick={() => handlePage(-1)}
-        >
-          -
-        </button>
-        <button className="" onClick={() => handlePage(+1)}>
-          +
-        </button>
+    <>
+      <div className={styles.cardcontainer}>
+        {foods.map((item: FoodStructure) => (
+          <FoodCard food={item} key={item.id}></FoodCard>
+        ))}
       </div>
-    </div>
+      <div className={styles.buttons}>
+        <div className={styles.pagebuttons}>
+          <button
+            className="style.productsButtonsPrev"
+            onClick={() => handlePage(-1)}
+          >
+            -
+          </button>
+          <button className="" onClick={() => handlePage(+1)}>
+            +
+          </button>
+        </div>
+        <div className={styles.filterbuttons}>
+          <button className="" onClick={() => handlePage(+0, "all")}>
+            All latin america
+          </button>
+          <button className="" onClick={() => handlePage(+0, "peru")}>
+            Peru
+          </button>
+          <button className="" onClick={() => handlePage(+0, "brazil")}>
+            Brazil
+          </button>
+          <button className="" onClick={() => handlePage(+0, "chile")}>
+            Chile
+          </button>
+          <button className="" onClick={() => handlePage(+0, "mexico")}>
+            Mexico
+          </button>
+          <button className="" onClick={() => handlePage(+0, "argentina")}>
+            Argentina
+          </button>
+        </div>
+      </div>
+    </>
   );
 }

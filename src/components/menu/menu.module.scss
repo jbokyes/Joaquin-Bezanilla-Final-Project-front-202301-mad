@@ -1,6 +1,23 @@
 .menu {
   display: flex;
-  flex-direction: row;
-  gap: 3rem;
+  flex-direction: column;
+  gap: 1.2rem;
   list-style: none;
+  visibility: hidden;
+  position: absolute;
+  right: 0.5rem;
+  a {
+    color: #414a2b;
+    text-decoration: none;
+    text-align: center;
+  }
+}
+nav:hover {
+  .menu {
+    visibility: visible;
+    background-color: #ede9d5;
+  }
+}
+.burgermenu {
+  width: 2.5rem;
 }

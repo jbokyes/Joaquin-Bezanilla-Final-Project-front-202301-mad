@@ -53,5 +53,13 @@ describe("Given FoodCardList component", () => {
         expect(useFood(foodMockRepo).loadFoods).toHaveBeenCalled();
       });
     });
+    test("Then it should return a functionable button that changes filter", async () => {
+      await act(async () => {
+        const buttons = await screen.findAllByRole("button");
+        expect(buttons[2]).toBeInTheDocument();
+        await userEvent.click(buttons[0]);
+        expect(useFood(foodMockRepo).loadFoods).toHaveBeenCalled();
+      });
+    });
   });
 });

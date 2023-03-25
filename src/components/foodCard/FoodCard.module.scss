@@ -3,5 +3,14 @@
 }
 
 .card__image {
-  width: 114px;
+  width: 150px;
+  border: 1px solid #6b5738;
+}
+.card {
+  width: 150px;
+  background-color: aliceblue;
+}
+.foodname {
+  display: flex;
+  justify-content: center;
 }

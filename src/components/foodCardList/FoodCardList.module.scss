@@ -5,3 +5,22 @@
   list-style: none;
   gap: 2rem;
 }
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .pagebuttons {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    justify-content: center;
+  }
+  .filterbuttons {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style: none;
+    gap: 2rem;
+  }
+}

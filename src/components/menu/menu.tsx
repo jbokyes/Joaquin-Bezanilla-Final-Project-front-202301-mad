@@ -8,6 +8,11 @@ type MenuProps = {
 export function Menu({ options }: MenuProps) {
   return (
     <nav>
+      <img
+        src={"./images/burger-menu.png"}
+        alt=""
+        className={styles.burgermenu}
+      />
       <ul className={styles.menu}>
         {options.map((item) => (
           <li key={item.label}>

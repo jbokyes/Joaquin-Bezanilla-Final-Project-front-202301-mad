@@ -19,7 +19,7 @@ export function FoodCard({ food }: CardProps) {
           </Link>
           <div className={styles.card__properties}>
             <div className={styles.card__properties__name}>
-              <span>{food.name}</span>
+              <span className={styles.foodname}>{food.name}</span>
             </div>
           </div>
         </div>
