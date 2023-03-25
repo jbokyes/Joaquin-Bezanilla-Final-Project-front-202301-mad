@@ -38,7 +38,7 @@ export function Form() {
 
   return (
     <form action="" onSubmit={handleSubmit} id="form" data-testid="form">
-      <div className={"form"}>
+      <div className={styles.formline}>
         <label htmlFor="">Name: </label>
         <input
           type="text"
@@ -48,7 +48,7 @@ export function Form() {
           required
         />
       </div>
-      <div className="form-line">
+      <div className={styles.formline}>
         <label htmlFor="">Cuisine: </label>
         <input
           type="text"
@@ -58,7 +58,7 @@ export function Form() {
           required
         />
       </div>
-      <div className="form-line">
+      <div className={styles.formline}>
         <label htmlFor="">Region: </label>
         <input
           type="text"
@@ -68,7 +68,7 @@ export function Form() {
           required
         />
       </div>
-      <div className="form-line">
+      <div className={styles.formline}>
         <label htmlFor="">Diet: </label>
         <input
           type="text"
@@ -78,7 +78,7 @@ export function Form() {
           required
         />
       </div>
-      <div className="form-line">
+      <div className={styles.formline}>
         <label htmlFor="">Description: </label>
         <input
           type="text"
