@@ -2,17 +2,20 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #ede9d5;
-  padding-bottom: 2rem;
+  background-color: #764335;
+  padding-bottom: 1rem;
   .header__div {
     display: flex;
     flex-direction: row;
   }
   .header__image {
-    width: 40px;
+    width: 80px;
+    position: absolute;
+    top: -1rem;
   }
   &__title {
-    color: #414a2b;
+    color: whitesmoke;
+    padding-left: 80px;
   }
   &__menu {
     align-items: center;

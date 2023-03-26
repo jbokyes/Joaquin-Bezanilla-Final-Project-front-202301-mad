@@ -4,16 +4,22 @@
 
 .card__image {
   width: 150px;
+  height: 150px;
+  object-fit: cover;
   border: 1px solid #6b5738;
   padding: 0.3rem;
 }
 .card {
   width: 150px;
   background-color: #ede9d5;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  background-color: #f6f2e4;
 }
 .foodname {
   display: flex;
   justify-content: center;
-  color: #6b5738;
+  color: #57472d;
   border: 0.7px solid #6b5738;
+  font-weight: bold;
+  font-family: sans-serif;
 }

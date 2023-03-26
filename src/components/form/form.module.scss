@@ -19,3 +19,20 @@ form {
 .form__image {
   padding-top: 1rem;
 }
+.form__feedback {
+  font-size: 2rem;
+  text-align: center;
+  color: #414a2b;
+}
+.form__submit {
+  background-color: #df7857;
+  color: white;
+  border: none;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-family: sans-serif;
+  border-radius: 1rem;
+}
+.form__submit:hover {
+  background-color: #7d3017;
+}

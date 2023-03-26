@@ -28,7 +28,7 @@ export default function Details() {
             <button> Edit </button>
           </Link>
         </div>
-        <h2 className={styles.details__title}>{foodDetails?.name} details</h2>
+        <h2 className={styles.details__title}>{foodDetails?.name}</h2>
         <div>
           <img
             src={foodDetails?.img}
@@ -37,10 +37,22 @@ export default function Details() {
           />
         </div>
         <ul className={styles.card__details}>
-          <li>Name: {foodDetails?.name}</li>
-          <li>Region: {foodDetails?.region}</li>
-          <li>Friendly to diets: {foodDetails?.diet}</li>
-          <li>Description: {foodDetails?.info}</li>
+          <li>
+            <span>Name: </span>
+            {foodDetails?.name}
+          </li>
+          <li>
+            <span>Region: </span>
+            {foodDetails?.region}
+          </li>
+          <li>
+            <span>Friendly to diets: </span>
+            {foodDetails?.diet}
+          </li>
+          <li>
+            <span>Description: </span>
+            {foodDetails?.info}
+          </li>
         </ul>
 
         <div className={styles.button_container}>

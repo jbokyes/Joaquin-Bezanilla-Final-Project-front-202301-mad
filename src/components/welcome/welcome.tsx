@@ -12,11 +12,7 @@ export function Welcome() {
         Welcome to the Latin american food wiki
       </h2>
       <Link to={`/add`} relative="path">
-        <img
-          src="./images/add-heart.png"
-          alt="latin-food"
-          className={styles.welcome__button}
-        />
+        <button className={styles.welcome__button}> Add Food dish</button>
       </Link>
     </div>
   );

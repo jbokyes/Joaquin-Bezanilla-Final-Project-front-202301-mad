@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
-import { SyntheticEvent, useMemo } from "react";
+import { SyntheticEvent, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useFood } from "../../hooks/use.food";
 import { FoodStructure, ProtoFoodStructure } from "../../models/food";
@@ -7,10 +7,8 @@ import { FoodRepo } from "../../services/repositories/food.repo";
 import styles from "./form.module.scss";
 export function Form() {
   const { id } = useParams();
-  console.log(id);
   const repo = useMemo(() => new FoodRepo(), []);
   const { foods } = useFood(repo);
-  console.log(foods);
   let foodToEdit = foods.find((item) => item.id === id);
   const { editFood, addFood } = useFood(repo);
 
@@ -35,6 +33,7 @@ export function Form() {
     }
     form.reset();
   };
+  const [isSubmit, setIsSubmit] = useState(false);
 
   return (
     <form action="" onSubmit={handleSubmit} id="form" data-testid="form">
@@ -93,7 +92,21 @@ export function Form() {
         <input type="file" />
       </div>
       <div className="button-div">
-        <button type="submit">SUBMIT</button>
+        <button
+          className={styles.form__submit}
+          type="submit"
+          onClick={() => {
+            setIsSubmit(true);
+            setTimeout(() => {
+              setIsSubmit(false);
+            }, 2500);
+          }}
+        >
+          SUBMIT
+        </button>
+        <p className={styles.form__feedback}>
+          {isSubmit ? `Food submitted!` : ""}
+        </p>
       </div>
     </form>
   );

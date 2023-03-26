@@ -1,12 +1,15 @@
 .menu {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 0.655rem;
   list-style: none;
   visibility: hidden;
   position: absolute;
-  right: 0.5rem;
-  border: 0.5px solid #6b5738;
+  right: 0.000000000000001rem;
+  top: 2.9rem;
+  border: 0.2px solid black;
+  background-color: #764335;
+  padding: 0.8rem 1rem 0.8rem 1rem;
   @media (min-width: 640px) {
     flex-direction: row;
     visibility: initial;
@@ -16,7 +19,7 @@
     top: 2.5%;
   }
   a {
-    color: #617143;
+    color: whitesmoke;
     text-decoration: none;
     text-align: center;
   }
@@ -24,10 +27,11 @@
 nav:hover {
   .menu {
     visibility: visible;
-    background-color: #ede9d5;
   }
 }
 .burgermenu {
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
   width: 2.5rem;
   display: initial;
   @media (min-width: 640px) {

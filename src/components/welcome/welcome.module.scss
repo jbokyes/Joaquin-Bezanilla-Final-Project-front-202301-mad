@@ -1,18 +1,30 @@
 .welcome {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1rem;
   align-items: center;
   background-color: #ede9d5;
   &__p {
     color: #414a2b;
     font-size: 36px;
     text-align: center;
+    padding-bottom: 1.5rem;
   }
   &__img {
-    padding: 0 1.5rem 0 1.5rem;
+    width: 100%;
     @media (min-width: 550px) {
-      padding: 0 3.5rem 0 3.5rem;
     }
+  }
+  &__button {
+    background-color: #df7857;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: sans-serif;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+  }
+  &__button:hover {
+    background-color: #7d3017;
   }
 }

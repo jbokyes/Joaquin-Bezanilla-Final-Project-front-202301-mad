@@ -1,33 +1,73 @@
 .details {
   display: flex;
   flex-direction: column;
-  padding: 2.5rem;
-  gap: 3rem;
-  align-items: center;
+  gap: 1.177rem;
+  padding: 0rem 0rem;
   background-color: #ede9d5;
+  padding: 1rem 0 0 3rem;
   @media (min-width: 550px) {
     align-items: baseline;
+  }
+  @media (min-width: 800px) {
+    padding: 1rem 0 0 5rem;
   }
   &__buttons {
     display: flex;
     flex-direction: row;
-    gap: 0.6rem;
+    gap: 2.3rem;
+    button {
+      background-color: #df7857;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-family: sans-serif;
+      border-radius: 1rem;
+      margin-top: 1rem;
+    }
+    button:hover {
+      background-color: #7d3017;
+    }
   }
   &__title {
     color: #414a2b;
+    font-size: 2rem;
+    padding: 0;
   }
   &__image {
-    width: 130px;
-    @media (max-width: 550px) {
-      width: 170px;
-      padding-left: 4rem;
+    width: 270px;
+    @media (min-width: 550px) {
+      width: 300px;
     }
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   }
   .card__details {
     display: flex;
     flex-direction: column;
-    list-style: circle;
+    list-style: none;
     gap: 0.7rem;
     color: #414a2b;
+    padding: 0;
+    padding-right: 2.5rem;
+    li {
+      font-size: 1.1rem;
+    }
+    span {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+  }
+}
+.button_container {
+  button {
+    background-color: #df7857;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: sans-serif;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+  }
+  button:hover {
+    background-color: #7d3017;
   }
 }
