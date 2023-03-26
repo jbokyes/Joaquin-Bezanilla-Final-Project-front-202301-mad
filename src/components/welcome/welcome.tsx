@@ -3,12 +3,20 @@ import styles from "./welcome.module.scss";
 export function Welcome() {
   return (
     <div className={styles.welcome}>
-      <img src="./images/latin-food-welcome.png" alt="latin-food" />
-      <p className={styles.welcome__p}>
+      <img
+        src="./images/latin-food-welcome.png"
+        alt="latin-food"
+        className={styles.welcome__img}
+      />
+      <h2 className={styles.welcome__p}>
         Welcome to the Latin american food wiki
-      </p>
+      </h2>
       <Link to={`/add`} relative="path">
-        <button> Add food </button>
+        <img
+          src="./images/add-heart.png"
+          alt="latin-food"
+          className={styles.welcome__button}
+        />
       </Link>
     </div>
   );

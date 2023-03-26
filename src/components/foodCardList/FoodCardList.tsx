@@ -25,15 +25,18 @@ export function FoodCardList() {
       </div>
       <div className={styles.buttons}>
         <div className={styles.pagebuttons}>
-          <button
-            className="style.productsButtonsPrev"
+          <img
+            alt="pagination to previous page"
+            src="./images/leftarrow.png"
+            className={styles.leftarrow}
             onClick={() => handlePage(-1)}
-          >
-            -
-          </button>
-          <button className="" onClick={() => handlePage(+1)}>
-            +
-          </button>
+          ></img>
+          <img
+            alt="pagination to next page"
+            src="./images/rightarrow.png"
+            className={styles.rightarrow}
+            onClick={() => handlePage(+1)}
+          ></img>
         </div>
         <div className={styles.filterbuttons}>
           <button className="" onClick={() => handlePage(+0, "all")}>

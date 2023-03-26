@@ -26,4 +26,20 @@
     list-style: none;
     gap: 2rem;
   }
+  .rightarrow {
+    background-color: #6b5738;
+    padding: 0.5rem;
+    border-radius: 20%;
+  }
+  .rightarrow:hover {
+    background-color: #414a2b;
+  }
+  .leftarrow {
+    background-color: #6b5738;
+    padding: 0.5rem;
+    border-radius: 20%;
+  }
+  .leftarrow:hover {
+    background-color: #414a2b;
+  }
 }

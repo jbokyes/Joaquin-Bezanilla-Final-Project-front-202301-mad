@@ -62,7 +62,7 @@ export function Form() {
         <label htmlFor="">Region: </label>
         <input
           type="text"
-          placeholder="Rick"
+          placeholder="chile, peru, argentina, brazil, mexico, other"
           defaultValue={foodToEdit?.region}
           className={styles.form__input}
           required
@@ -72,7 +72,7 @@ export function Form() {
         <label htmlFor="">Diet: </label>
         <input
           type="text"
-          placeholder="Rick"
+          placeholder="Diets this dish is friendly to"
           defaultValue={foodToEdit?.diet}
           className={styles.form__input}
           required
@@ -82,7 +82,7 @@ export function Form() {
         <label htmlFor="">Description: </label>
         <input
           type="text"
-          placeholder="Rick"
+          placeholder="Everything about this dish"
           defaultValue={foodToEdit?.info}
           className={styles.form__input}
           required
