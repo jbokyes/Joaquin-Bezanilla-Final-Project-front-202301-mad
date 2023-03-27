@@ -20,7 +20,7 @@ export function Form() {
     const newFood: Partial<FoodStructure> = {
       name: inputs[0].value,
       cuisine: inputs[1].value,
-      region: inputs[2].value,
+      region: inputs[2].value.toLowerCase(),
       diet: inputs[3].value,
       info: inputs[4].value,
     };
