@@ -14,7 +14,7 @@ describe("Given the Home component", () => {
           </Provider>
         </MemoryRouter>
       );
-      const element = screen.getByRole("img");
+      const element = screen.getByRole("heading");
       expect(element).toBeInTheDocument();
     });
   });

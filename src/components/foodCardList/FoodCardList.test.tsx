@@ -47,17 +47,35 @@ describe("Given FoodCardList component", () => {
     });
     test("Then it should return a functionable button that pages back", async () => {
       await act(async () => {
-        const buttons = await screen.findAllByRole("button");
-        expect(buttons[0]).toBeInTheDocument();
-        await userEvent.click(buttons[0]);
+        const paginationButtons = await screen.findAllByRole("img");
+        expect(paginationButtons[0]).toBeInTheDocument();
+        await userEvent.click(paginationButtons[0]);
         expect(useFood(foodMockRepo).loadFoods).toHaveBeenCalled();
       });
     });
     test("Then it should return a functionable button that changes filter", async () => {
       await act(async () => {
+        const paginationButtons1 = await screen.findAllByRole("img");
+        expect(paginationButtons1[1]).toBeInTheDocument();
+        await userEvent.click(paginationButtons1[1]);
+        expect(useFood(foodMockRepo).loadFoods).toHaveBeenCalled();
+      });
+    });
+    test("Then it should return a functionable button that changes region", async () => {
+      await act(async () => {
         const buttons = await screen.findAllByRole("button");
+        expect(buttons[0]).toBeInTheDocument();
+        expect(buttons[1]).toBeInTheDocument();
         expect(buttons[2]).toBeInTheDocument();
+        expect(buttons[3]).toBeInTheDocument();
+        expect(buttons[4]).toBeInTheDocument();
+        expect(buttons[5]).toBeInTheDocument();
         await userEvent.click(buttons[0]);
+        await userEvent.click(buttons[1]);
+        await userEvent.click(buttons[2]);
+        await userEvent.click(buttons[3]);
+        await userEvent.click(buttons[4]);
+        await userEvent.click(buttons[5]);
         expect(useFood(foodMockRepo).loadFoods).toHaveBeenCalled();
       });
     });

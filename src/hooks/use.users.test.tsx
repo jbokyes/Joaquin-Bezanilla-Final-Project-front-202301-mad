@@ -3,6 +3,7 @@
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
+import { MemoryRouter } from "react-router-dom";
 import { UserServerResponse, UserStructure } from "../models/user";
 import { UsersApiRepo } from "../services/repositories/users.repo";
 import { store } from "../store/store";
@@ -41,9 +42,11 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
     };
     await act(async () =>
       render(
-        <Provider store={store}>
-          <TestComponent></TestComponent>
-        </Provider>
+        <MemoryRouter>
+          <Provider store={store}>
+            <TestComponent></TestComponent>
+          </Provider>
+        </MemoryRouter>
       )
     );
   });

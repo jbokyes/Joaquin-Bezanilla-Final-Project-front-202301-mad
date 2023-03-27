@@ -114,4 +114,14 @@ describe("Given the userSlice with payload and initial state mocked", () => {
       });
     });
   });
+  describe("When the logout method is called", () => {
+    test("Then it should return the mock", () => {
+      const logoutAction = {
+        type: "user/logout",
+        payload: "",
+      };
+      const mockReducer = userReducer(mockInitialState, logoutAction);
+      expect(mockReducer.user).toEqual({});
+    });
+  });
 });

@@ -10,13 +10,7 @@ describe("Given AppRouter component", () => {
     render(
       <Provider store={store}>
         <Router
-          initialEntries={[
-            "/home",
-            "/about",
-            "/login",
-            "/register",
-            "/favourites",
-          ]}
+          initialEntries={["/", "/about", "/login", "/register", "/favourites"]}
           initialIndex={number}
         >
           <AppRouter></AppRouter>
@@ -27,7 +21,7 @@ describe("Given AppRouter component", () => {
   describe("When rendering and the path is '/'", () => {
     test("Then, the image from Welcome from Home should be in the screen", async () => {
       await waitFor(async () => prepareTestFunction(0));
-      const element = await screen.findByRole("img");
+      const element = await screen.findByRole("heading");
       expect(element).toBeInTheDocument();
     });
   });
