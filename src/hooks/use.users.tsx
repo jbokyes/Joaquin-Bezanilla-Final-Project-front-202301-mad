@@ -45,13 +45,9 @@ export function useUsers(repo: UsersApiRepo) {
   };
 
   const logoutUser = () => {
-    try {
-      usersDispatch(logout());
-      localStorage.removeItem("token");
-      navigate("/home");
-    } catch (error) {
-      console.log((error as Error).message);
-    }
+    usersDispatch(logout());
+    localStorage.removeItem("token");
+    navigate("/home");
   };
 
   return {
