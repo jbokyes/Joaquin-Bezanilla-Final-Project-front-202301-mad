@@ -1,15 +1,19 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import About from "../about/about";
-import { MenuOption, menuOptions } from "../app/app";
-import Favourites from "../favourites/favourites";
-import Login from "../login/login";
-import Register from "../register/register";
+import { MenuOption, menuOptions, nonMenuOptions } from "../app/app";
+import Add from "../form/add";
 
 const Home = lazy(() => import("../home/home"));
+const Details = lazy(() => import("../details/details"));
+const Register = lazy(() => import("../register/register"));
+const Login = lazy(() => import("../login/login"));
+const Favourites = lazy(() => import("../favourites/favourites"));
+const Edit = lazy(() => import("../form/edit"));
 
 export function AppRouter() {
   const navMenuOptions: MenuOption[] = menuOptions;
+  const nonNavMenuOptions: MenuOption[] = nonMenuOptions;
   return (
     <Suspense>
       <Routes>
@@ -25,6 +29,12 @@ export function AppRouter() {
           path={navMenuOptions[4].path}
           element={<Favourites></Favourites>}
         ></Route>
+        <Route
+          path={nonNavMenuOptions[0].path}
+          element={<Details></Details>}
+        ></Route>
+        <Route path={nonNavMenuOptions[1].path} element={<Add></Add>}></Route>
+        <Route path={nonNavMenuOptions[2].path} element={<Edit></Edit>}></Route>
       </Routes>
     </Suspense>
   );

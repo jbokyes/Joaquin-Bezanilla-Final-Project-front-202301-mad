@@ -36,8 +36,11 @@ const userSlice = createSlice({
         item.id === action.payload.id ? { ...item, ...action.payload } : item
       );
     },
+    logout(state) {
+      state.userLogged = {} as UserStructure;
+    },
   },
 });
 
-export const { register, login, readId, update } = userSlice.actions;
+export const { register, login, readId, update, logout } = userSlice.actions;
 export const userReducer = userSlice.reducer;

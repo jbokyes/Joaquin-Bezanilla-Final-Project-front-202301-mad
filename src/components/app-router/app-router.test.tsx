@@ -19,11 +19,9 @@ describe("Given AppRouter component", () => {
     );
   };
   describe("When rendering and the path is '/'", () => {
-    test("Then, the title 'Home' from Home should be in the screen", async () => {
+    test("Then, the image from Welcome from Home should be in the screen", async () => {
       await waitFor(async () => prepareTestFunction(0));
-      const element = await screen.findByRole("heading", {
-        name: "Home",
-      });
+      const element = await screen.findByRole("heading");
       expect(element).toBeInTheDocument();
     });
   });
@@ -31,7 +29,7 @@ describe("Given AppRouter component", () => {
     test("Then, the title 'What is this site for?' from Home should be in the screen", async () => {
       await waitFor(async () => prepareTestFunction(1));
       const element = await screen.findByRole("heading", {
-        name: "About",
+        name: "About this Page",
       });
       expect(element).toBeInTheDocument();
     });

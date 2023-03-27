@@ -1,0 +1,43 @@
+.footer {
+  padding: 1.123456rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #764335;
+  flex-direction: column;
+  @media (min-width: 555px) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .palta {
+    width: 87px;
+  }
+  &__actual {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    color: whitesmoke;
+    padding-bottom: 1rem;
+
+    .foods {
+      font-size: 30px;
+    }
+    .by {
+      color: #000000;
+      font-size: 15px;
+    }
+  }
+  &__socials {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding-right: 1rem;
+    .icon {
+      height: 40px;
+      position: relative;
+      align-items: center;
+    }
+    .footerimg {
+      height: 5%;
+    }
+  }
+}

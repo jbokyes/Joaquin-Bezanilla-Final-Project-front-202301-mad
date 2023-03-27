@@ -3,6 +3,7 @@
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
+import { MemoryRouter } from "react-router-dom";
 import { UserServerResponse, UserStructure } from "../models/user";
 import { UsersApiRepo } from "../services/repositories/users.repo";
 import { store } from "../store/store";
@@ -27,7 +28,8 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
     } as unknown as UsersApiRepo;
 
     const TestComponent = function () {
-      const { registerUser, loginUser, userFavourites } = useUsers(mockRepo);
+      const { registerUser, loginUser, userFavourites, logoutUser } =
+        useUsers(mockRepo);
 
       return (
         <>
@@ -36,14 +38,17 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
           <button onClick={() => userFavourites("testId", "testaction")}>
             Add to Favourites
           </button>
+          <button onClick={() => logoutUser()}>Logout</button>
         </>
       );
     };
     await act(async () =>
       render(
-        <Provider store={store}>
-          <TestComponent></TestComponent>
-        </Provider>
+        <MemoryRouter>
+          <Provider store={store}>
+            <TestComponent></TestComponent>
+          </Provider>
+        </MemoryRouter>
       )
     );
   });
@@ -91,6 +96,12 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
       await act(async () => userEvent.click(elements[1]));
       await act(async () => userEvent.click(elements[2]));
       expect(mockRepo.update).not.toBeCalled();
+    });
+  });
+  describe("When the TestComponent is rendered and the logout button is clicked", () => {
+    test("Then, the logoutUser function should be called", async () => {
+      const elements = await screen.findAllByRole("button");
+      await act(async () => userEvent.click(elements[3]));
     });
   });
 });

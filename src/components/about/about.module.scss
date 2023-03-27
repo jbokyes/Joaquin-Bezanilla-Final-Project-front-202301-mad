@@ -1,0 +1,31 @@
+.about {
+  padding: 2.2rem;
+  background-color: #ede9d5;
+  &__div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-self: center;
+  @media (min-width: 550px) {
+    text-align: initial;
+  }
+  gap: 3rem;
+  &__title {
+    font-size: 30px;
+    text-align: center;
+    color: #414a2b;
+    padding-bottom: 2rem;
+  }
+  &__subtitle {
+    font-size: 25px;
+    text-align: center;
+    color: #7d3017;
+    @media (min-width: 550px) {
+      text-align: initial;
+    }
+  }
+}

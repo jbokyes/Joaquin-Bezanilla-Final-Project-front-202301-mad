@@ -1,0 +1,12 @@
+.editdiv {
+  background-color: #ede9d5;
+}
+.editfood {
+  @media (min-width: 550px) {
+    text-align: initial;
+    padding: 2rem 4rem 0 2rem;
+  }
+  text-align: center;
+  color: #6b5738;
+  padding-top: 2rem;
+}

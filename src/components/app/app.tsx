@@ -1,4 +1,5 @@
 import { AppRouter } from "../app-router/app-router";
+import { Footer } from "../footer/footer";
 import { Header } from "../header/header";
 import { Menu } from "../menu/menu";
 import "./app.css";
@@ -14,6 +15,11 @@ export const menuOptions: MenuOption[] = [
   { label: "Register", path: "/register" },
   { label: "Favourites", path: "/favourites" },
 ];
+export const nonMenuOptions: MenuOption[] = [
+  { label: "Details", path: "/details/:id" },
+  { label: "Add", path: "/add" },
+  { label: "Edit", path: "/edit/:id" },
+];
 
 export function App() {
   return (
@@ -22,6 +28,7 @@ export function App() {
         <Menu options={menuOptions}></Menu>
       </Header>
       <AppRouter></AppRouter>
+      <Footer></Footer>
     </>
   );
 }
