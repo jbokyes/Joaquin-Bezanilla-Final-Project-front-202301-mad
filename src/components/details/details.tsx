@@ -23,9 +23,6 @@ export default function Details() {
   const handleFavourite = () => {
     userFavourites(foodDetails!, "add");
   };
-  const handleUnfavourite = () => {
-    userFavourites(foodDetails!, "delete");
-  };
 
   return (
     <>
@@ -38,7 +35,6 @@ export default function Details() {
             <button> Edit </button>
           </Link>
           <button onClick={handleFavourite}> Add to favourites </button>
-          <button onClick={handleUnfavourite}> Delete from favourites </button>
         </div>
         <h2 className={styles.details__title}>{foodDetails?.name}</h2>
         <div>
