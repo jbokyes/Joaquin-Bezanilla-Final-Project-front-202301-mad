@@ -34,7 +34,6 @@ export function useFood(repo: FoodRepo) {
     try {
       await newImage(food, file);
       const foodToAdd = await repo.createFood(food);
-      console.log("foodToAdd: ", foodToAdd);
       dispatch(ac.addCreator(foodToAdd.results[0]));
     } catch (error) {
       console.log((error as Error).message);
