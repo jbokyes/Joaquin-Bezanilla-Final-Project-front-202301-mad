@@ -42,14 +42,6 @@ const userSlice = createSlice({
     },
     addToFavourite(state, action: PayloadAction<FoodStructure>) {
       state.user.addFoods = [...state.userLogged.addFoods!, action.payload];
-      console.log(
-        "action payload: ",
-        action.payload,
-        "state.user.addFoods: ",
-        state.user.addFoods,
-        "state.userLogged.addFoods: ",
-        state.userLogged.addFoods
-      );
     },
   },
 });
