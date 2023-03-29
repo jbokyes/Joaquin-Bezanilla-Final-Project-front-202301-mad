@@ -7,9 +7,6 @@ export function Favourites() {
   const repoUser = useMemo(() => new UsersApiRepo(), []);
   const { usersState } = useUsers(repoUser);
   const { addFoods } = usersState.user;
-  console.log(addFoods);
-  console.log("userlogged: ", usersState.userLogged);
-  console.log("users: ", usersState.user);
 
   return (
     <div className={styles.favourites}>

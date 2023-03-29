@@ -17,7 +17,7 @@ export class FoodRepo {
   url: string;
   nowPage: number;
   constructor() {
-    this.url = "https://latino-foods-finalproject.onrender.com/foods";
+    this.url = "http://localhost:4200/foods";
     this.nowPage = 1;
   }
 
@@ -46,7 +46,6 @@ export class FoodRepo {
     return data;
   }
   async createFood(food: ProtoFoodStructure): Promise<FoodServerResponse> {
-    console.log("entré al create de create");
     const resp = await fetch(this.url + "/add", {
       method: "POST",
       body: JSON.stringify(food),
@@ -55,7 +54,6 @@ export class FoodRepo {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
     });
-    console.log(resp);
     if (!resp.ok)
       throw new Error("Error HTTP: " + resp.status + " / " + resp.statusText);
     const data = await resp.json();
@@ -78,7 +76,6 @@ export class FoodRepo {
   }
 
   async deleteFood(foodId: FoodStructure["id"]): Promise<void> {
-    console.log("entramos a delete food");
     const url = this.url + "/" + foodId;
     const resp = await fetch(url, {
       method: "DELETE",

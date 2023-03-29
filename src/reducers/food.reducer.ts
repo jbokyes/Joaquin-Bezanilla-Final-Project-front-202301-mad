@@ -16,6 +16,5 @@ export const foodReducer = createReducer(initialState, (builder) => {
   builder.addCase(ac.deleteCreator, (state, { payload }) =>
     state.filter((item) => item.id !== payload)
   );
-
   builder.addDefaultCase((state) => state);
 });

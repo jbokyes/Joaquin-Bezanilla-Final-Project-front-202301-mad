@@ -38,14 +38,11 @@ export function useUsers(repo: UsersApiRepo) {
   const userFavourites = async (food: FoodStructure, action: string) => {
     try {
       const userToken = localStorage.getItem("token");
-      console.log("linea 1");
       if (!userToken) throw new Error("Not authorized");
-      console.log("linea 2");
       const userInfo = await repo.update(food.id, userToken, action);
       console.log("userInfo: ", userInfo);
       // Arreglo temporal usersDispatch(update(userInfo.results[0]));
       usersDispatch(addToFavourite(food));
-      console.log("Custom hook troubleshooting!", food);
     } catch (error) {
       console.log((error as Error).message);
     }

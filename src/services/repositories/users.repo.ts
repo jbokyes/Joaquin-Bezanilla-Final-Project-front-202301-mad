@@ -64,7 +64,6 @@ export class UsersApiRepo implements UserRepo<UserServerResponse> {
         Authorization: "Bearer " + token,
       },
     });
-    console.log(resp);
     if (!resp.ok)
       throw new Error("Error http: " + resp.status + " / " + resp.statusText);
     const userInfo = (await resp.json()) as UserServerResponse;
