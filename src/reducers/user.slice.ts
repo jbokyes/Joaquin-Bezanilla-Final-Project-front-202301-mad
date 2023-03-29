@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { UserStructure } from "../models/user";
+import { FoodStructure } from "../models/food";
 
 export type State = {
   userLogged: UserStructure;
@@ -39,8 +40,16 @@ const userSlice = createSlice({
     logout(state) {
       state.userLogged = {} as UserStructure;
     },
+    addToFavourite(state, action: PayloadAction<FoodStructure>) {
+      state.user.addFoods = [...state.userLogged.addFoods!, action.payload];
+      state.userLogged.addFoods = [
+        ...state.userLogged.addFoods!,
+        action.payload,
+      ];
+    },
   },
 });
 
-export const { register, login, readId, update, logout } = userSlice.actions;
+export const { register, login, readId, update, logout, addToFavourite } =
+  userSlice.actions;
 export const userReducer = userSlice.reducer;

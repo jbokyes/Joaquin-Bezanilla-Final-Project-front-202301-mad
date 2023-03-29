@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useUsers } from "../../hooks/use.users";
 import { UsersApiRepo } from "../../services/repositories/users.repo";
 import { MenuOption } from "../app/app";
+import UserLogout from "../userLogout/userLogout";
 import styles from "./menu.module.scss";
 type MenuProps = {
   options: MenuOption[];
@@ -42,6 +43,7 @@ export function Menu({ options }: MenuProps) {
                 </Link>
               </li>
             ))}
+        {isLogging ? <UserLogout></UserLogout> : ""}
       </ul>
     </nav>
   );

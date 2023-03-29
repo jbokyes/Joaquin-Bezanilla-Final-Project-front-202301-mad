@@ -43,6 +43,7 @@ export class UsersApiRepo implements UserRepo<UserServerResponse> {
     const resp = await fetch(url, {
       method: "GET",
       headers: {
+        "Content-type": "application/json",
         Authorization: "Bearer" + token,
       },
     });
@@ -56,13 +57,14 @@ export class UsersApiRepo implements UserRepo<UserServerResponse> {
     token: string,
     action: string
   ): Promise<UserServerResponse> {
-    const url = this.url + "/" + action + "/favourites" + foodId;
+    const url = this.url + "/favourites/" + action + "/" + foodId;
     const resp = await fetch(url, {
       method: "PATCH",
       headers: {
         Authorization: "Bearer " + token,
       },
     });
+    console.log(resp);
     if (!resp.ok)
       throw new Error("Error http: " + resp.status + " / " + resp.statusText);
     const userInfo = (await resp.json()) as UserServerResponse;
