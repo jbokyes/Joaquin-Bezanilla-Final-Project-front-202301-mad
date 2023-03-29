@@ -1,4 +1,22 @@
-.favourites__title {
+.favourites {
   background-color: #ede9d5;
-  color: #414a2b;
+  .favourites__title {
+    background-color: #ede9d5;
+    color: #414a2b;
+    padding: 1rem;
+  }
+  .favourites__no {
+    background-color: #ede9d5;
+    color: #414a2b;
+    font-size: 1.2rem;
+    padding: 0;
+  }
+  .favourites__img {
+    width: 150px;
+  }
+}
+.favourites__products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  list-style: none;
 }

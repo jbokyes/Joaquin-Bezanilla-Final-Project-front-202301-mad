@@ -23,6 +23,7 @@ describe("Given the Details page component", () => {
         },
       ],
       loadOneFestival: jest.fn(),
+      deleteFood: jest.fn(),
     });
 
     await act(async () => {

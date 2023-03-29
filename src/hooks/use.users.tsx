@@ -7,7 +7,6 @@ import {
   login,
   logout,
   register,
-  update,
 } from "../reducers/user.slice";
 import { UsersApiRepo } from "../services/repositories/users.repo";
 import { AppDispatch, RootState } from "../store/store";
@@ -43,8 +42,10 @@ export function useUsers(repo: UsersApiRepo) {
       if (!userToken) throw new Error("Not authorized");
       console.log("linea 2");
       const userInfo = await repo.update(food.id, userToken, action);
-      usersDispatch(update(userInfo.results[0]));
+      console.log("userInfo: ", userInfo);
+      // Arreglo temporal usersDispatch(update(userInfo.results[0]));
       usersDispatch(addToFavourite(food));
+      console.log("Custom hook troubleshooting!", food);
     } catch (error) {
       console.log((error as Error).message);
     }
