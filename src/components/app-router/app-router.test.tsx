@@ -10,7 +10,7 @@ describe("Given AppRouter component", () => {
     render(
       <Provider store={store}>
         <Router
-          initialEntries={["/", "/about", "/login", "/register", "/favourites"]}
+          initialEntries={["/", "/about", "/login", "/favourites", "/register"]}
           initialIndex={number}
         >
           <AppRouter></AppRouter>
@@ -45,7 +45,7 @@ describe("Given AppRouter component", () => {
   });
   describe("When rendering and the path is '/register'", () => {
     test("Then, the title 'register' from Home should be in the screen", async () => {
-      await waitFor(async () => prepareTestFunction(3));
+      await waitFor(async () => prepareTestFunction(4));
       const element = await screen.findByRole("heading", {
         name: "Register",
       });
@@ -54,7 +54,7 @@ describe("Given AppRouter component", () => {
   });
   describe("When rendering and the path is '/favourites'", () => {
     test("Then, the title 'Favourites' from Home should be in the screen", async () => {
-      await waitFor(async () => prepareTestFunction(4));
+      await waitFor(async () => prepareTestFunction(3));
       const element = await screen.findByRole("heading", {
         name: "Favourites",
       });

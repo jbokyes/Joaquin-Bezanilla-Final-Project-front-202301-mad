@@ -18,10 +18,12 @@ export function FoodCardList() {
   };
   return (
     <>
-      <div className={styles.cardcontainer}>
-        {foods.map((item: FoodStructure) => (
-          <FoodCard food={item} key={item.id}></FoodCard>
-        ))}
+      <div>
+        <ul className={styles.cardcontainer}>
+          {foods.map((item: FoodStructure) => (
+            <FoodCard food={item} key={item.id}></FoodCard>
+          ))}
+        </ul>
       </div>
       <div className={styles.buttons}>
         <div className={styles.pagebuttons}>

@@ -1,8 +1,10 @@
 import { useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useFood } from "../../hooks/use.food";
+import { useUsers } from "../../hooks/use.users";
 import { FoodStructure } from "../../models/food";
 import { FoodRepo } from "../../services/repositories/food.repo";
+import { UsersApiRepo } from "../../services/repositories/users.repo";
 import styles from "./details.module.scss";
 export type CardProps = {
   food: FoodStructure;
@@ -10,11 +12,16 @@ export type CardProps = {
 export default function Details() {
   const { id } = useParams();
   const repo = useMemo(() => new FoodRepo(), []);
+  const userRepo = useMemo(() => new UsersApiRepo(), []);
   const { foods, deleteFood } = useFood(repo);
+  const { userFavourites } = useUsers(userRepo);
 
   const foodDetails = foods.find((item) => item.id === id);
   const handleDelete = () => {
     deleteFood(foodDetails!.id);
+  };
+  const handleFavourite = () => {
+    userFavourites(foodDetails!, "add");
   };
 
   return (
@@ -27,6 +34,7 @@ export default function Details() {
           <Link to={`/edit/${id}`} relative="path">
             <button> Edit </button>
           </Link>
+          <button onClick={handleFavourite}> Add to favourites </button>
         </div>
         <h2 className={styles.details__title}>{foodDetails?.name}</h2>
         <div>
