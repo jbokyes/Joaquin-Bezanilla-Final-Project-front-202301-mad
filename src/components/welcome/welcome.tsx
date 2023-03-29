@@ -4,7 +4,7 @@ export function Welcome() {
   return (
     <div className={styles.welcome}>
       <img
-        src="./images/mesa-chilena.jpg"
+        src="./images/mesa-fondo.jpg"
         alt="latin-food"
         className={styles.welcome__img}
       />
