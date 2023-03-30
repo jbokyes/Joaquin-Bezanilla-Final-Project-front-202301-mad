@@ -17,7 +17,7 @@ export class FoodRepo {
   url: string;
   nowPage: number;
   constructor() {
-    this.url = "http://localhost:4200/foods";
+    this.url = "https://latino-foods-finalproject.onrender.com/foods";
     this.nowPage = 1;
   }
 
