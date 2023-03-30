@@ -49,6 +49,14 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/reportWebVitals.ts",
+      "<rootDir>/src/index.ts",
+      "<rootDir>/src/store/store.ts",
+      "<rootDir>/src/models/*"
+    ]
+  },
   "devDependencies": {
     "husky": "^8.0.0"
   }
